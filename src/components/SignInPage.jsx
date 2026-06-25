@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+import ThemeToggle from './ThemeToggle'
 
 export default function SignInPage() {
   const navigate = useNavigate()
@@ -17,7 +18,10 @@ export default function SignInPage() {
   }
 
   return (
-    <div className="h-screen w-full flex items-center justify-center bg-bg-0">
+    <div className="h-screen w-full flex items-center justify-center bg-bg-0 relative">
+      <div className="absolute top-4 right-4">
+        <ThemeToggle />
+      </div>
       <div className="w-full max-w-sm mx-4">
         <div className="text-center mb-8">
           <Link to="/" className="inline-block">
@@ -25,7 +29,7 @@ export default function SignInPage() {
               <span className="text-2xl font-serif font-bold text-text-100">A</span>
             </div>
           </Link>
-          <h1 className="text-2xl font-medium text-white">Welcome Back to Ana GPA</h1>
+          <h1 className="text-2xl font-medium text-text-100">Welcome Back to Ana GPA</h1>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -68,7 +72,7 @@ export default function SignInPage() {
 
         <div className="text-center mt-6">
           <Link to="/signup" className="text-sm text-text-300 hover:text-text-100 transition-colors">
-            Don't have an account? <span className="text-white font-medium">Sign up</span>
+            Don't have an account? <span className="text-text-100 font-medium">Sign up</span>
           </Link>
         </div>
 

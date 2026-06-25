@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import ThemeToggle from './ThemeToggle'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -86,6 +87,7 @@ export default function LandingPage() {
           </NavigationMenuList>
         </NavigationMenu>
         <div className="flex items-center gap-4">
+          <ThemeToggle />
           <Link
             to="/signup"
             className="text-sm bg-white text-black px-4 py-2 rounded-lg font-medium hover:bg-[#E3E3E3] transition-colors"
@@ -98,7 +100,7 @@ export default function LandingPage() {
       {/* ── Hero ── */}
       <section className="flex-1 flex flex-col items-center justify-center px-6 py-20 text-center">
         <img src="/ana-logo.png" alt="Ana Logo" className="w-20 h-20 rounded-full object-cover border border-bg-300 mb-6" />
-        <h1 className="text-5xl sm:text-6xl font-medium text-white tracking-tight mb-4">
+        <h1 className="text-5xl sm:text-6xl font-medium text-text-100 tracking-tight mb-4">
           Your Personal AI Assistant
         </h1>
         <p className="text-lg text-text-300 max-w-xl mx-auto mb-10 leading-relaxed">
@@ -124,7 +126,7 @@ export default function LandingPage() {
       {/* ── Features ── */}
       <section className="px-6 py-16 border-t border-bg-200">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-medium text-center text-white mb-12">
+          <h2 className="text-2xl font-medium text-center text-text-100 mb-12">
             Everything you need
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -164,7 +166,7 @@ export default function LandingPage() {
 
       {/* ── CTA ── */}
       <section className="px-6 py-16 border-t border-bg-200 text-center">
-        <h2 className="text-2xl font-medium text-white mb-4">
+        <h2 className="text-2xl font-medium text-text-100 mb-4">
           Ready to meet Ana?
         </h2>
         <p className="text-text-300 mb-8 max-w-md mx-auto">
@@ -245,7 +247,7 @@ function FeatureCard({ number, title, description }) {
   return (
     <div className="bg-bg-100 border border-bg-200 rounded-lg p-6 hover:border-[#4B4D53] transition-colors">
       <span className="text-xs text-text-400 font-mono mb-3 block">{number}</span>
-      <h3 className="text-base font-medium text-white mb-2">{title}</h3>
+      <h3 className="text-base font-medium text-text-100 mb-2">{title}</h3>
       <p className="text-sm text-text-300 leading-relaxed">{description}</p>
     </div>
   )

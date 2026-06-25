@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import ThemeToggle from './ThemeToggle'
 
 export default function ContactPage() {
   return (
@@ -8,13 +9,16 @@ export default function ContactPage() {
           <img src="/ana-logo.png" alt="Ana Logo" className="w-10 h-10 rounded-full object-cover" />
           <span className="text-xl font-normal tracking-wide" style={{ fontFamily: 'Alphacorsa, sans-serif' }}>Ana Solar</span>
         </Link>
-        <Link to="/chat" className="text-sm text-text-200 hover:text-white border border-bg-200 px-4 py-2 rounded-lg transition-colors">
-          Go to Chat
-        </Link>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <Link to="/chat" className="text-sm text-text-200 hover:text-text-100 border border-bg-200 px-4 py-2 rounded-lg transition-colors">
+            Go to Chat
+          </Link>
+        </div>
       </header>
 
       <main className="flex-1 max-w-3xl mx-auto px-6 py-16">
-        <h1 className="text-4xl font-medium text-white mb-8">Contact Us</h1>
+        <h1 className="text-4xl font-medium text-text-100 mb-8">Contact Us</h1>
 
         <section className="space-y-6 text-[15px] leading-relaxed text-text-200">
           <p>
@@ -25,29 +29,29 @@ export default function ContactPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
             <div className="bg-bg-100 border border-bg-200 rounded-lg p-6">
-              <h3 className="text-white font-medium mb-2">Email</h3>
-              <a href="mailto:support@anagpa.com" className="text-text-200 hover:text-white transition-colors">
+              <h3 className="text-text-100 font-medium mb-2">Email</h3>
+              <a href="mailto:support@anagpa.com" className="text-text-200 hover:text-text-100 transition-colors">
                 support@anagpa.com
               </a>
             </div>
 
             <div className="bg-bg-100 border border-bg-200 rounded-lg p-6">
-              <h3 className="text-white font-medium mb-2">GitHub</h3>
-              <a href="https://github.com/DTC-Team" target="_blank" rel="noopener noreferrer" className="text-text-200 hover:text-white transition-colors">
+              <h3 className="text-text-100 font-medium mb-2">GitHub</h3>
+              <a href="https://github.com/DTC-Team" target="_blank" rel="noopener noreferrer" className="text-text-200 hover:text-text-100 transition-colors">
                 github.com/DTC-Team
               </a>
             </div>
 
             <div className="bg-bg-100 border border-bg-200 rounded-lg p-6">
-              <h3 className="text-white font-medium mb-2">YouTube</h3>
-              <a href="https://youtube.com/@DTC-Team" target="_blank" rel="noopener noreferrer" className="text-text-200 hover:text-white transition-colors">
+              <h3 className="text-text-100 font-medium mb-2">YouTube</h3>
+              <a href="https://youtube.com/@DTC-Team" target="_blank" rel="noopener noreferrer" className="text-text-200 hover:text-text-100 transition-colors">
                 youtube.com/@DTC-Team
               </a>
             </div>
 
             <div className="bg-bg-100 border border-bg-200 rounded-lg p-6">
-              <h3 className="text-white font-medium mb-2">Report an Issue</h3>
-              <a href="https://github.com/DTC-Team/ana-gpa/issues" target="_blank" rel="noopener noreferrer" className="text-text-200 hover:text-white transition-colors">
+              <h3 className="text-text-100 font-medium mb-2">Report an Issue</h3>
+              <a href="https://github.com/DTC-Team/ana-gpa/issues" target="_blank" rel="noopener noreferrer" className="text-text-200 hover:text-text-100 transition-colors">
                 GitHub Issues
               </a>
             </div>

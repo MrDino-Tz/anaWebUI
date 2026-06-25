@@ -3,6 +3,7 @@ import { Search, Plus, MessageSquare, HelpCircle, Settings, ChevronDown, Share2,
 import { useAudioRecorder } from '../hooks/useAudioRecorder';
 import { fetchModels } from '../hooks/useBackend';
 import MarkdownRenderer from './MarkdownRenderer';
+import ThemeToggle from './ThemeToggle';
 import CONFIG from '../config';
 
 function timeSince(date: Date): string {
@@ -200,7 +201,7 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
 
 
     return (
-        <div className="flex h-screen w-full bg-[#131314] text-[#E3E3E3] font-sans overflow-hidden">
+        <div className="flex h-screen w-full bg-bg-0 text-text-100 font-sans overflow-hidden">
             
             {/* Mobile Sidebar Overlay */}
             {isSidebarOpen && (
@@ -211,19 +212,19 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
             )}
 
             {/* Sidebar */}
-            <div className={`fixed inset-y-0 left-0 z-50 w-[260px] bg-[#1E1F22] border-r border-[#2B2D31] flex flex-col h-full flex-shrink-0 transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+            <div className={`fixed inset-y-0 left-0 z-50 w-[260px] bg-bg-100 border-r border-bg-200 flex flex-col h-full flex-shrink-0 transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                 {/* Header */}
                 <div className="flex items-center justify-between p-4 pb-2">
                     <div className="flex items-center gap-2">
-                        <a href="/" className="w-8 h-8 rounded-full bg-[#2B2D31] border border-[#35373C] flex items-center justify-center overflow-hidden hover:bg-[#35373C] transition-colors">
+                        <a href="/" className="w-8 h-8 rounded-full bg-bg-200 border border-bg-300 flex items-center justify-center overflow-hidden hover:bg-bg-300 transition-colors">
                             <img src="/ana-logo.png" alt="Ana" className="w-full h-full object-cover" />
                         </a>
-                        <div className="w-8 h-8 flex items-center justify-center rounded-md cursor-pointer hover:bg-[#35373C] transition-colors text-[#A3A6AA]">
+                        <div className="w-8 h-8 flex items-center justify-center rounded-md cursor-pointer hover:bg-bg-300 transition-colors text-text-200">
                             <Search className="w-[18px] h-[18px]" />
                         </div>
                     </div>
                     <button 
-                        className="p-1.5 text-[#80848E] hover:text-[#E3E3E3] transition-colors rounded-lg hover:bg-[#2B2D31]"
+                        className="p-1.5 text-text-300 hover:text-text-100 transition-colors rounded-lg hover:bg-bg-200"
                         onClick={() => setIsSidebarOpen(false)}
                     >
                         <PanelLeftClose className="w-5 h-5" />
@@ -232,12 +233,12 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
 
                 {/* New Chat Button */}
                 <div className="px-3 py-2">
-                    <button onClick={onNewChat} className="w-full flex items-center justify-between px-3 py-2 bg-[#2B2D31] hover:bg-[#35373C] transition-colors rounded-md text-sm font-medium">
+                    <button onClick={onNewChat} className="w-full flex items-center justify-between px-3 py-2 bg-bg-200 hover:bg-bg-300 transition-colors rounded-md text-sm font-medium">
                         <div className="flex items-center gap-2">
                             <Plus className="w-[18px] h-[18px]" />
                             <span>New Chat</span>
                         </div>
-                        <div className="flex items-center gap-1 text-[#80848E] text-[11px] font-mono bg-[#1E1F22] px-1.5 py-0.5 rounded-md border border-[#35373C]">
+                        <div className="flex items-center gap-1 text-text-300 text-[11px] font-mono bg-bg-100 px-1.5 py-0.5 rounded-md border border-bg-300">
                             <span>⌘N</span>
                         </div>
                     </button>
@@ -246,16 +247,16 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                 {/* Recent Chats List */}
                 <div className="flex-1 overflow-y-auto custom-scrollbar px-3 mt-2">
                     <div className="flex items-center justify-between mb-2 px-3">
-                        <span className="text-[11px] font-semibold text-[#80848E]">Recent</span>
+                        <span className="text-[11px] font-semibold text-text-300">Recent</span>
                         {conversations.length > 0 && (
-                            <button onClick={onClearConversations} className="text-[10px] text-[#80848E] hover:text-[#E3E3E3] transition-colors">Clear</button>
+                            <button onClick={onClearConversations} className="text-[10px] text-text-300 hover:text-text-100 transition-colors">Clear</button>
                         )}
                     </div>
                     <div className="space-y-[2px]">
                         {conversations.slice(0, 20).map((chat) => (
                             <button 
                                 key={chat.id} 
-                                className="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-[#2B2D31] rounded-lg text-[13px] text-[#A3A6AA] hover:text-[#E3E3E3] transition-colors text-left truncate group"
+                                className="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-bg-200 rounded-lg text-[13px] text-text-200 hover:text-text-100 transition-colors text-left truncate group"
                                 onClick={() => { onSelectConversation(chat.id); setIsSidebarOpen(false); }}
                             >
                                 <MessageSquare className="w-4 h-4 shrink-0 opacity-70 group-hover:opacity-100" />
@@ -263,37 +264,37 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                             </button>
                         ))}
                         {conversations.length === 0 && (
-                            <div className="px-3 py-4 text-[12px] text-[#80848E] text-center">No recent chats</div>
+                            <div className="px-3 py-4 text-[12px] text-text-300 text-center">No recent chats</div>
                         )}
                     </div>
                 </div>
 
                 {/* Bottom: Home and User */}
-                <div className="p-3 space-y-[2px] border-t border-[#2B2D31] mt-auto">
-                    <a href="/" className="w-full flex items-center gap-3 px-3 py-2 hover:bg-[#2B2D31] rounded-lg text-[13px] text-[#A3A6AA] hover:text-[#E3E3E3] transition-colors no-underline">
+                <div className="p-3 space-y-[2px] border-t border-bg-200 mt-auto">
+                    <a href="/" className="w-full flex items-center gap-3 px-3 py-2 hover:bg-bg-200 rounded-lg text-[13px] text-text-200 hover:text-text-100 transition-colors no-underline">
                         <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                         <span>Home</span>
                     </a>
                     <div className="relative" ref={userMenuRef}>
                         <button 
                             onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                            className="w-full flex items-center gap-3 px-3 py-2 hover:bg-[#2B2D31] rounded-lg text-[13px] text-[#A3A6AA] hover:text-[#E3E3E3] transition-colors"
+                            className="w-full flex items-center gap-3 px-3 py-2 hover:bg-bg-200 rounded-lg text-[13px] text-text-200 hover:text-text-100 transition-colors"
                         >
-                            <div className="w-5 h-5 rounded-full overflow-hidden flex-shrink-0 bg-[#2B2D31]">
+                            <div className="w-5 h-5 rounded-full overflow-hidden flex-shrink-0 bg-bg-200">
                                 <img src={avatarUrl || user?.avatar_url || '/ana-logo.png'} alt="User" className="w-full h-full object-cover" />
                             </div>
                             <span className="truncate">{user?.username || 'Anonymous'}</span>
                         </button>
                         {isUserMenuOpen && (
-                            <div className="absolute bottom-full left-0 right-0 mb-1 bg-[#1E1F22] border border-[#2B2D31] rounded-md shadow-2xl overflow-hidden animate-fade-in z-50">
-                                <div className="p-3 border-b border-[#2B2D31]">
+                            <div className="absolute bottom-full left-0 right-0 mb-1 bg-bg-100 border border-bg-200 rounded-md shadow-2xl overflow-hidden animate-fade-in z-50">
+                                <div className="p-3 border-b border-bg-200">
                                     <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 rounded-full bg-[#2B2D31] border border-[#35373C] overflow-hidden flex-shrink-0">
+                                        <div className="w-10 h-10 rounded-full bg-bg-200 border border-bg-300 overflow-hidden flex-shrink-0">
                                             <img src={avatarUrl || user?.avatar_url || '/ana-logo.png'} alt="User" className="w-full h-full object-cover" />
                                         </div>
                                         <div className="flex-1 min-w-0">
-                                            <div className="text-[14px] font-medium text-[#E3E3E3] truncate">{user?.username || 'Anonymous'}</div>
-                                            <div className="text-[12px] text-[#80848E] truncate">{user ? `ID: ${user.device_id.slice(0, 8)}...` : 'Not signed in'}</div>
+                                            <div className="text-[14px] font-medium text-text-100 truncate">{user?.username || 'Anonymous'}</div>
+                                            <div className="text-[12px] text-text-300 truncate">{user ? `ID: ${user.device_id.slice(0, 8)}...` : 'Not signed in'}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -302,7 +303,7 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                                         <>
                                             <button 
                                                 onClick={() => { onSettingsClick(); setIsUserMenuOpen(false); }}
-                                                className="w-full flex items-center gap-3 px-3 py-2 hover:bg-[#2B2D31] rounded-lg text-[13px] text-[#A3A6AA] hover:text-[#E3E3E3] transition-colors"
+                                                className="w-full flex items-center gap-3 px-3 py-2 hover:bg-bg-200 rounded-lg text-[13px] text-text-200 hover:text-text-100 transition-colors"
                                             >
                                                 <Settings className="w-[18px] h-[18px]" />
                                                 <span>Settings</span>
@@ -325,14 +326,14 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                                                         } catch {}
                                                     }
                                                 }}
-                                                className="w-full flex items-center gap-3 px-3 py-2 hover:bg-[#2B2D31] rounded-lg text-[13px] text-[#A3A6AA] hover:text-[#E3E3E3] transition-colors"
+                                                className="w-full flex items-center gap-3 px-3 py-2 hover:bg-bg-200 rounded-lg text-[13px] text-text-200 hover:text-text-100 transition-colors"
                                             >
                                                 <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
                                                 <span>Edit Profile</span>
                                             </button>
                                             <button 
                                                 onClick={() => { onLogout?.(); setIsUserMenuOpen(false); }}
-                                                className="w-full flex items-center gap-3 px-3 py-2 hover:bg-[#2B2D31] rounded-lg text-[13px] text-[#A3A6AA] hover:text-[#E3E3E3] transition-colors"
+                                                className="w-full flex items-center gap-3 px-3 py-2 hover:bg-bg-200 rounded-lg text-[13px] text-text-200 hover:text-text-100 transition-colors"
                                             >
                                                 <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
                                                 <span>Log out</span>
@@ -354,57 +355,58 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
             </div>
 
             {/* Main Area */}
-            <div className={`flex-1 flex flex-col h-full bg-[#131314] relative min-w-0 transition-all duration-300 ${isSidebarOpen ? 'lg:ml-[260px]' : 'lg:ml-0'}`}>
+            <div className={`flex-1 flex flex-col h-full bg-bg-0 relative min-w-0 transition-all duration-300 ${isSidebarOpen ? 'lg:ml-[260px]' : 'lg:ml-0'}`}>
                 
                 {/* Topbar */}
                 <div className="h-[60px] flex items-center justify-between px-3 sm:px-6 flex-shrink-0 w-full z-10">
                     <div className="flex items-center gap-2">
                         <button 
-                            className="p-1.5 text-[#80848E] hover:text-[#E3E3E3] transition-colors rounded-lg hover:bg-[#1E1F22]"
+                            className="p-1.5 text-text-300 hover:text-text-100 transition-colors rounded-lg hover:bg-bg-100"
                             onClick={() => setIsSidebarOpen(true)}
                         >
                             <Menu className="w-5 h-5" />
                         </button>
                         <div className="relative" ref={modelDropdownRef}>
                             <div 
-                                className="flex items-center gap-1.5 cursor-pointer hover:bg-[#1E1F22] px-2 py-1.5 rounded-lg transition-colors -ml-2"
+                                className="flex items-center gap-1.5 cursor-pointer hover:bg-bg-100 px-2 py-1.5 rounded-lg transition-colors -ml-2"
                                 onClick={() => setIsModelDropdownOpen(!isModelDropdownOpen)}
                             >
                                 <span className="text-[13px] sm:text-[15px] font-medium tracking-tight">{models.find(m => m.id === selectedModel)?.name || 'Ana Moon v1.0'}</span>
-                                <ChevronDown className={`w-[14px] h-[14px] text-[#80848E] transition-transform ${isModelDropdownOpen ? 'rotate-180' : ''}`} />
+                                <ChevronDown className={`w-[14px] h-[14px] text-text-300 transition-transform ${isModelDropdownOpen ? 'rotate-180' : ''}`} />
                             </div>
                             
                             {/* Model Dropdown */}
                             {isModelDropdownOpen && (
-                                <div className="absolute top-full left-0 mt-1 w-[240px] bg-[#1E1F22] border border-[#2B2D31] rounded-md shadow-2xl overflow-hidden animate-fade-in z-50 p-1.5">
+                                <div className="absolute top-full left-0 mt-1 w-[240px] bg-bg-100 border border-bg-200 rounded-md shadow-2xl overflow-hidden animate-fade-in z-50 p-1.5">
                                     {models.map(m => (
                                         <button 
                                             key={m.id}
-                                            className={`w-full text-left px-3 py-2.5 rounded-lg flex flex-col group transition-colors ${selectedModel === m.id ? 'bg-[#2B2D31]' : 'hover:bg-[#2B2D31]'}`}
+                                            className={`w-full text-left px-3 py-2.5 rounded-lg flex flex-col group transition-colors ${selectedModel === m.id ? 'bg-bg-200' : 'hover:bg-bg-200'}`}
                                             onClick={() => { onModelChange(m.id); setIsModelDropdownOpen(false); }}
                                         >
                                             <div className="flex items-center justify-between w-full">
-                                                <span className="text-[13px] font-semibold text-[#E3E3E3]">{m.name}</span>
+                                                <span className="text-[13px] font-semibold text-text-100">{m.name}</span>
                                                 {selectedModel === m.id && (
                                                     <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
                                                 )}
                                             </div>
-                                            <span className="text-[11px] text-[#A3A6AA] mt-0.5">{m.description}</span>
+                                            <span className="text-[11px] text-text-200 mt-0.5">{m.description}</span>
                                         </button>
                                     ))}
                                     {models.length === 0 && (
-                                        <div className="px-3 py-4 text-[12px] text-[#80848E] text-center">Loading models...</div>
+                                        <div className="px-3 py-4 text-[12px] text-text-300 text-center">Loading models...</div>
                                     )}
                                 </div>
                             )}
                         </div>
                     </div>
                     <div className="flex items-center gap-2 sm:gap-3">
-                        <button className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#2B2D31] hover:bg-[#1E1F22] text-[#E3E3E3] text-[13px] transition-colors">
+                        <ThemeToggle />
+                        <button className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-bg-200 hover:bg-bg-100 text-text-100 text-[13px] transition-colors">
                             <Share2 className="w-3.5 h-3.5" />
                             <span>Share</span>
                         </button>
-                        <button className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#2B2D31] hover:bg-[#1E1F22] text-[#E3E3E3] text-[13px] transition-colors">
+                        <button className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-bg-200 hover:bg-bg-100 text-text-100 text-[13px] transition-colors">
                             <HelpCircle className="w-3.5 h-3.5" />
                             <span>Help</span>
                         </button>
@@ -419,14 +421,14 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                             {messages.map(msg => (
                                 <div key={msg.id} className={`flex w-full group ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
                                     {msg.type === 'ana' && (
-                                        <div className="w-8 h-8 rounded-full bg-[#2B2D31] border border-[#35373C] flex items-center justify-center mr-3 mt-1 shrink-0 overflow-hidden">
+                                        <div className="w-8 h-8 rounded-full bg-bg-200 border border-bg-300 flex items-center justify-center mr-3 mt-1 shrink-0 overflow-hidden">
                                             <img src="/ana-logo.png" alt="Ana" className="w-full h-full object-cover" />
                                         </div>
                                     )}
                                     <div className={`relative max-w-[90%] sm:max-w-[85%] rounded-lg px-4 sm:px-5 py-3 sm:py-3.5 text-[14px] sm:text-[15px] leading-relaxed shadow-sm font-sans
                                         ${msg.type === 'user' 
-                                            ? 'bg-[#2B2D31] text-[#E3E3E3] rounded-br-sm' 
-                                            : 'bg-transparent text-[#E3E3E3] rounded-bl-sm'}`}
+                                            ? 'bg-bg-200 text-text-100 rounded-br-sm' 
+                                            : 'bg-transparent text-text-100 rounded-bl-sm'}`}
                                     >
                                         {/* Attachment images shown above text */}
                                         {msg.attachments && msg.attachments.length > 0 && (
@@ -437,12 +439,12 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                                                             key={i}
                                                             src={att.url}
                                                             alt={att.name}
-                                                            className="max-w-[200px] max-h-[200px] rounded-md object-cover border border-[#35373C] shadow-sm"
+                                                            className="max-w-[200px] max-h-[200px] rounded-md object-cover border border-bg-300 shadow-sm"
                                                         />
                                                     ) : (
-                                                        <div key={i} className="flex items-center gap-2 bg-[#35373C] rounded-lg px-3 py-2">
-                                                            <Paperclip className="w-3.5 h-3.5 text-[#A3A6AA]" />
-                                                            <span className="text-[12px] text-[#A3A6AA] max-w-[140px] truncate">{att.name}</span>
+                                                        <div key={i} className="flex items-center gap-2 bg-bg-300 rounded-lg px-3 py-2">
+                                                            <Paperclip className="w-3.5 h-3.5 text-text-200" />
+                                                            <span className="text-[12px] text-text-200 max-w-[140px] truncate">{att.name}</span>
                                                         </div>
                                                     )
                                                 ))}
@@ -455,12 +457,12 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                                         )}
                                         <button
                                             onClick={() => handleCopy(msg.id, msg.text)}
-                                            className={`absolute w-7 h-7 rounded-md bg-[#2B2D31] border border-[#35373C] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#35373C] ${msg.type === 'user' ? '-bottom-2 -left-2' : '-top-2 -right-2'}`}
+                                            className={`absolute w-7 h-7 rounded-md bg-bg-200 border border-bg-300 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-bg-300 ${msg.type === 'user' ? '-bottom-2 -left-2' : '-top-2 -right-2'}`}
                                         >
                                             {copiedId === msg.id ? (
                                                 <Check className="w-3.5 h-3.5 text-green-400" />
                                             ) : (
-                                                <Copy className="w-3.5 h-3.5 text-[#80848E]" />
+                                                <Copy className="w-3.5 h-3.5 text-text-300" />
                                             )}
                                         </button>
                                     </div>
@@ -468,10 +470,10 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                             ))}
                             {isProcessing && (
                                 <div className="flex w-full justify-start animate-fade-in">
-                                    <div className="w-8 h-8 rounded-full bg-[#2B2D31] border border-[#35373C] flex items-center justify-center mr-3 mt-1 shrink-0 overflow-hidden">
+                                    <div className="w-8 h-8 rounded-full bg-bg-200 border border-bg-300 flex items-center justify-center mr-3 mt-1 shrink-0 overflow-hidden">
                                         <img src="/ana-logo.png" alt="Ana" className="w-full h-full object-cover" />
                                     </div>
-                                    <div className="flex items-center gap-3 max-w-[85%] rounded-lg px-5 py-3.5 bg-transparent text-[#E3E3E3] rounded-bl-sm">
+                                    <div className="flex items-center gap-3 max-w-[85%] rounded-lg px-5 py-3.5 bg-transparent text-text-100 rounded-bl-sm">
                                         <div className="w-2 h-2 bg-[#80848E] rounded-full animate-pulse" />
                                         <div className="w-2 h-2 bg-[#80848E] rounded-full animate-pulse delay-75" />
                                         <div className="w-2 h-2 bg-[#80848E] rounded-full animate-pulse delay-150" />
@@ -482,20 +484,20 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                         </div>
 
                         {/* Pinned Input Area for Chat */}
-                        <div className="py-4 bg-[#131314]">
-                            <div className="w-full bg-[#1E1F22] rounded-lg border border-[#2B2D31] focus-within:border-[#4B4D53] transition-colors p-3 flex flex-col shadow-sm">
+                        <div className="py-4 bg-bg-0">
+                            <div className="w-full bg-bg-100 rounded-lg border border-bg-200 focus-within:border-[#4B4D53] transition-colors p-3 flex flex-col shadow-sm">
                                 {/* Attachment Previews */}
                                 {attachments.length > 0 && (
-                                    <div className="flex flex-wrap gap-2 mb-3 pb-3 border-b border-[#2B2D31]">
+                                    <div className="flex flex-wrap gap-2 mb-3 pb-3 border-b border-bg-200">
                                         {attachments.map((att, i) => (
-                                            <div key={i} className="flex items-center gap-1.5 bg-[#2B2D31] rounded-lg px-2.5 py-1.5 group">
+                                            <div key={i} className="flex items-center gap-1.5 bg-bg-200 rounded-lg px-2.5 py-1.5 group">
                                                 {att.url ? (
                                                     <img src={att.url} alt={att.name} className="w-6 h-6 rounded object-cover" />
                                                 ) : (
-                                                    <Paperclip className="w-3.5 h-3.5 text-[#80848E]" />
+                                                    <Paperclip className="w-3.5 h-3.5 text-text-300" />
                                                 )}
-                                                <span className="text-[11px] text-[#A3A6AA] max-w-[100px] truncate">{att.name}</span>
-                                                <button onClick={() => removeAttachment(i)} className="text-[#80848E] hover:text-[#E3E3E3] transition-colors ml-1">
+                                                <span className="text-[11px] text-text-200 max-w-[100px] truncate">{att.name}</span>
+                                                <button onClick={() => removeAttachment(i)} className="text-text-300 hover:text-text-100 transition-colors ml-1">
                                                     <X className="w-3 h-3" />
                                                 </button>
                                             </div>
@@ -503,11 +505,11 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                                     </div>
                                 )}
                                 <div className="flex items-end gap-2">
-                                    <button onClick={() => chatFileInputRef.current?.click()} className="p-1.5 text-[#80848E] hover:text-[#E3E3E3] transition-colors rounded-lg hover:bg-[#2B2D31] flex-shrink-0" title="Attach file">
+                                    <button onClick={() => chatFileInputRef.current?.click()} className="p-1.5 text-text-300 hover:text-text-100 transition-colors rounded-lg hover:bg-bg-200 flex-shrink-0" title="Attach file">
                                         <Paperclip className="w-4 h-4" />
                                     </button>
                                     <input ref={chatFileInputRef} type="file" multiple className="hidden" onChange={(e) => handleFileSelect(e, 'file')} />
-                                    <button onClick={() => chatImageInputRef.current?.click()} className="p-1.5 text-[#80848E] hover:text-[#E3E3E3] transition-colors rounded-lg hover:bg-[#2B2D31] flex-shrink-0" title="Attach image">
+                                    <button onClick={() => chatImageInputRef.current?.click()} className="p-1.5 text-text-300 hover:text-text-100 transition-colors rounded-lg hover:bg-bg-200 flex-shrink-0" title="Attach image">
                                         <ImageIcon className="w-4 h-4" />
                                     </button>
                                     <input ref={chatImageInputRef} type="file" accept="image/*" multiple className="hidden" onChange={(e) => handleFileSelect(e, 'image')} />
@@ -518,13 +520,13 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                                             onChange={(e) => setInputText(e.target.value)}
                                             onKeyDown={handleKeyDown}
                                             placeholder="How can ANA help you today?"
-                                            className="w-full bg-transparent border-0 outline-none text-[#E3E3E3] text-[15px] placeholder:text-[#80848E] resize-none overflow-y-auto custom-scrollbar py-1 leading-relaxed block"
+                                            className="w-full bg-transparent border-0 outline-none text-text-100 text-[15px] placeholder:text-text-300 resize-none overflow-y-auto custom-scrollbar py-1 leading-relaxed block"
                                             rows={1}
                                             autoFocus
                                         />
                                     </div>
                                     <button 
-                                        className={`p-1.5 rounded-lg transition-colors flex-shrink-0 ${isRecording ? 'bg-red-500/20 text-red-500' : 'text-[#80848E] hover:text-[#E3E3E3] hover:bg-[#2B2D31]'}`}
+                                        className={`p-1.5 rounded-lg transition-colors flex-shrink-0 ${isRecording ? 'bg-red-500/20 text-red-500' : 'text-text-300 hover:text-text-100 hover:bg-bg-200'}`}
                                         onClick={isRecording ? stopRecording : startRecording}
                                         title={isRecording ? 'Stop recording' : 'Voice input'}
                                     >
@@ -534,13 +536,13 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                                         onClick={handleSend}
                                         disabled={!inputText.trim() && attachments.length === 0}
                                         className={`w-8 h-8 flex items-center justify-center rounded-md transition-all flex-shrink-0
-                                            ${(inputText.trim() || attachments.length > 0) ? 'bg-white text-black hover:bg-[#E3E3E3]' : 'bg-[#2B2D31] text-[#80848E]'}`}
+                                            ${(inputText.trim() || attachments.length > 0) ? 'bg-white text-black hover:bg-[#E3E3E3]' : 'bg-bg-200 text-text-300'}`}
                                     >
                                         <ArrowUp className="w-4 h-4" />
                                     </button>
                                 </div>
                             </div>
-                            <p className="text-[10px] sm:text-[11px] text-[#80848E] text-center mt-2 tracking-wide w-full px-2">ANA can make mistakes, so please double check the response.</p>
+                            <p className="text-[10px] sm:text-[11px] text-text-300 text-center mt-2 tracking-wide w-full px-2">ANA can make mistakes, so please double check the response.</p>
                         </div>
                     </div>
                 ) : (
@@ -548,32 +550,32 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                     <div className="flex-1 flex flex-col items-center justify-center max-w-[1000px] w-full mx-auto px-4 mt-[-60px]">
                         
                         {/* Greeting */}
-                        <h1 className="text-[28px] sm:text-[38px] font-medium text-white mb-2 sm:mb-3 tracking-tight animate-fade-in text-center flex items-center justify-center gap-2">
+                        <h1 className="text-[28px] sm:text-[38px] font-medium text-text-100 mb-2 sm:mb-3 tracking-tight animate-fade-in text-center flex items-center justify-center gap-2">
                             {greeting} <span className="hidden sm:inline">{user?.username || 'Anonymous'}</span> <span className="animate-bounce inline-block">👋</span>
                         </h1>
 
                         {/* Large Input Box */}
-                        <div className="w-full bg-[#1E1F22] rounded-lg border border-[#2B2D31] p-4 sm:p-5 flex flex-col min-h-[160px] sm:min-h-[180px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-colors focus-within:border-[#4B4D53] animate-fade-in relative">
+                        <div className="w-full bg-bg-100 rounded-lg border border-bg-200 p-4 sm:p-5 flex flex-col min-h-[160px] sm:min-h-[180px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-colors focus-within:border-[#4B4D53] animate-fade-in relative">
                             {/* Attachment Previews */}
                             {attachments.length > 0 && (
-                                <div className="flex flex-wrap gap-2 mb-3 pb-3 border-b border-[#2B2D31]">
+                                <div className="flex flex-wrap gap-2 mb-3 pb-3 border-b border-bg-200">
                                     {attachments.map((att, i) => (
-                                        <div key={i} className="flex items-center gap-1.5 bg-[#2B2D31] rounded-lg px-2.5 py-1.5 group">
+                                        <div key={i} className="flex items-center gap-1.5 bg-bg-200 rounded-lg px-2.5 py-1.5 group">
                                             {att.url ? (
                                                 <img src={att.url} alt={att.name} className="w-6 h-6 rounded object-cover" />
                                             ) : (
-                                                <Paperclip className="w-3.5 h-3.5 text-[#80848E]" />
+                                                <Paperclip className="w-3.5 h-3.5 text-text-300" />
                                             )}
-                                            <span className="text-[11px] text-[#A3A6AA] max-w-[100px] truncate">{att.name}</span>
-                                            <button onClick={() => removeAttachment(i)} className="text-[#80848E] hover:text-[#E3E3E3] transition-colors ml-1">
+                                            <span className="text-[11px] text-text-200 max-w-[100px] truncate">{att.name}</span>
+                                            <button onClick={() => removeAttachment(i)} className="text-text-300 hover:text-text-100 transition-colors ml-1">
                                                 <X className="w-3 h-3" />
                                             </button>
                                         </div>
                                     ))}
                                 </div>
                             )}
-                            <div className="flex items-start gap-3 text-[#80848E] mb-3">
-                                <button onClick={() => fileInputRef.current?.click()} title="Attach file" className="hover:text-[#E3E3E3] transition-colors mt-[3px] flex-shrink-0">
+                            <div className="flex items-start gap-3 text-text-300 mb-3">
+                                <button onClick={() => fileInputRef.current?.click()} title="Attach file" className="hover:text-text-100 transition-colors mt-[3px] flex-shrink-0">
                                     <Paperclip className="w-[18px] h-[18px]" />
                                 </button>
                                 <input ref={fileInputRef} type="file" multiple className="hidden" onChange={(e) => handleFileSelect(e, 'file')} />
@@ -582,7 +584,7 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                                     onChange={(e) => setInputText(e.target.value)}
                                     onKeyDown={handleKeyDown}
                                     placeholder="How can ANA help you today?"
-                                    className="w-full bg-transparent border-0 outline-none text-[#E3E3E3] text-[16px] placeholder:text-[#80848E] resize-none h-[80px] py-0 leading-relaxed font-sans"
+                                    className="w-full bg-transparent border-0 outline-none text-text-100 text-[16px] placeholder:text-text-300 resize-none h-[80px] py-0 leading-relaxed font-sans"
                                     autoFocus
                                 />
                             </div>
@@ -591,44 +593,44 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                                 <div className="flex items-center gap-3">
                                     <div className="relative" ref={heroModelDropdownRef}>
                                         <div 
-                                            className="flex items-center gap-1.5 bg-[#2B2D31] text-[#E3E3E3] px-3 py-1.5 rounded-lg cursor-pointer hover:bg-[#35373C] transition-colors border border-[#35373C]"
+                                            className="flex items-center gap-1.5 bg-bg-200 text-text-100 px-3 py-1.5 rounded-lg cursor-pointer hover:bg-bg-300 transition-colors border border-bg-300"
                                             onClick={() => setIsHeroModelDropdownOpen(!isHeroModelDropdownOpen)}
                                         >
                                             <span className="text-[12px] font-medium">{models.find(m => m.id === selectedModel)?.name || 'Ana Moon v1.0'}</span>
-                                            <ChevronDown className={`w-3.5 h-3.5 text-[#A3A6AA] transition-transform ${isHeroModelDropdownOpen ? 'rotate-180' : ''}`} />
+                                            <ChevronDown className={`w-3.5 h-3.5 text-text-200 transition-transform ${isHeroModelDropdownOpen ? 'rotate-180' : ''}`} />
                                         </div>
                                         
                                         {/* Hero Model Dropdown */}
                                         {isHeroModelDropdownOpen && (
-                                            <div className="absolute bottom-full left-0 mb-2 w-[220px] bg-[#1E1F22] border border-[#2B2D31] rounded-md shadow-2xl overflow-hidden animate-fade-in z-50 p-1.5">
+                                            <div className="absolute bottom-full left-0 mb-2 w-[220px] bg-bg-100 border border-bg-200 rounded-md shadow-2xl overflow-hidden animate-fade-in z-50 p-1.5">
                                                 {models.map(m => (
                                                     <button 
                                                         key={m.id}
-                                                        className={`w-full text-left px-3 py-2.5 rounded-lg flex flex-col group transition-colors ${selectedModel === m.id ? 'bg-[#2B2D31]' : 'hover:bg-[#2B2D31]'}`}
+                                                        className={`w-full text-left px-3 py-2.5 rounded-lg flex flex-col group transition-colors ${selectedModel === m.id ? 'bg-bg-200' : 'hover:bg-bg-200'}`}
                                                         onClick={() => { onModelChange(m.id); setIsHeroModelDropdownOpen(false); }}
                                                     >
                                                         <div className="flex items-center justify-between w-full">
-                                                            <span className="text-[13px] font-semibold text-[#E3E3E3]">{m.name}</span>
+                                                            <span className="text-[13px] font-semibold text-text-100">{m.name}</span>
                                                             {selectedModel === m.id && (
                                                                 <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
                                                             )}
                                                         </div>
-                                                        <span className="text-[11px] text-[#A3A6AA] mt-0.5">{m.description}</span>
+                                                        <span className="text-[11px] text-text-200 mt-0.5">{m.description}</span>
                                                     </button>
                                                 ))}
                                                 {models.length === 0 && (
-                                                    <div className="px-3 py-4 text-[12px] text-[#80848E] text-center">Loading models...</div>
+                                                    <div className="px-3 py-4 text-[12px] text-text-300 text-center">Loading models...</div>
                                                 )}
                                             </div>
                                         )}
                                     </div>
-                                    <div className="flex items-center gap-2 ml-1 text-[#80848E]">
-                                        <button onClick={() => imageInputRef.current?.click()} className="p-1.5 hover:bg-[#2B2D31] rounded-lg hover:text-[#E3E3E3] transition-colors" title="Attach image">
+                                    <div className="flex items-center gap-2 ml-1 text-text-300">
+                                        <button onClick={() => imageInputRef.current?.click()} className="p-1.5 hover:bg-bg-200 rounded-lg hover:text-text-100 transition-colors" title="Attach image">
                                             <ImageIcon className="w-[18px] h-[18px]" />
                                         </button>
                                         <input ref={imageInputRef} type="file" accept="image/*" multiple className="hidden" onChange={(e) => handleFileSelect(e, 'image')} />
                                         <button 
-                                            className={`p-1.5 rounded-lg transition-colors ${isRecording ? 'bg-red-500/20 text-red-500' : 'hover:bg-[#2B2D31] hover:text-[#E3E3E3]'}`}
+                                            className={`p-1.5 rounded-lg transition-colors ${isRecording ? 'bg-red-500/20 text-red-500' : 'hover:bg-bg-200 hover:text-text-100'}`}
                                             onClick={isRecording ? stopRecording : startRecording}
                                         >
                                             <Zap className={`w-[18px] h-[18px] ${isRecording ? 'animate-pulse' : ''}`} />
@@ -639,34 +641,34 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                                     onClick={handleSend}
                                     disabled={!inputText.trim()}
                                     className={`w-9 h-9 flex items-center justify-center rounded-md transition-all shadow-sm flex-shrink-0
-                                        ${inputText.trim() ? 'bg-white text-black hover:bg-[#E3E3E3] scale-100' : 'bg-[#2B2D31] text-[#80848E] scale-95'}`}
+                                        ${inputText.trim() ? 'bg-white text-black hover:bg-[#E3E3E3] scale-100' : 'bg-bg-200 text-text-300 scale-95'}`}
                                 >
                                     <ArrowUp className="w-4.5 h-4.5" />
                                 </button>
                             </div>
                         </div>
-                        <p className="text-[10px] sm:text-[11px] text-[#80848E] text-center mt-3 mb-2 tracking-wide px-2">ANA can make mistakes, so please double check the response.</p>
+                        <p className="text-[10px] sm:text-[11px] text-text-300 text-center mt-3 mb-2 tracking-wide px-2">ANA can make mistakes, so please double check the response.</p>
 
                         {/* Hint Text */}
                         <div className="w-full mt-2 mb-6 sm:mb-8 text-left px-2 animate-fade-in hidden sm:block">
-                            <p className="text-[12px] text-[#80848E]">Collaborate with ANA using documents, images and more</p>
+                            <p className="text-[12px] text-text-300">Collaborate with ANA using documents, images and more</p>
                         </div>
 
                         {/* Action Pills */}
                         <div className="flex flex-wrap items-center justify-center gap-3 w-full mb-10 animate-fade-in">
-                                    <button className="flex items-center gap-2 px-4 py-2 border border-dashed border-[#4B4D53] rounded-lg text-[13px] text-[#A3A6AA] hover:text-[#E3E3E3] hover:border-[#80848E] transition-colors bg-[#131314]">
+                                    <button className="flex items-center gap-2 px-4 py-2 border border-dashed border-[#4B4D53] rounded-lg text-[13px] text-text-200 hover:text-text-100 hover:border-[#80848E] transition-colors bg-bg-0">
                                 <ImageIcon className="w-4 h-4" />
                                 <span>Create images</span>
                             </button>
-                                    <button className="flex items-center gap-2 px-4 py-2 border border-dashed border-[#4B4D53] rounded-lg text-[13px] text-[#A3A6AA] hover:text-[#E3E3E3] hover:border-[#80848E] transition-colors bg-[#131314]">
+                                    <button className="flex items-center gap-2 px-4 py-2 border border-dashed border-[#4B4D53] rounded-lg text-[13px] text-text-200 hover:text-text-100 hover:border-[#80848E] transition-colors bg-bg-0">
                                 <Search className="w-4 h-4" />
                                 <span>Analyze images</span>
                             </button>
-                                    <button className="flex items-center gap-2 px-4 py-2 border border-dashed border-[#4B4D53] rounded-lg text-[13px] text-[#A3A6AA] hover:text-[#E3E3E3] hover:border-[#80848E] transition-colors bg-[#131314]">
+                                    <button className="flex items-center gap-2 px-4 py-2 border border-dashed border-[#4B4D53] rounded-lg text-[13px] text-text-200 hover:text-text-100 hover:border-[#80848E] transition-colors bg-bg-0">
                                 <Code className="w-4 h-4" />
                                 <span>Code</span>
                             </button>
-                                    <button className="flex items-center gap-2 px-4 py-2 border border-dashed border-[#4B4D53] rounded-lg text-[13px] text-[#A3A6AA] hover:text-[#E3E3E3] hover:border-[#80848E] transition-colors bg-[#131314]">
+                                    <button className="flex items-center gap-2 px-4 py-2 border border-dashed border-[#4B4D53] rounded-lg text-[13px] text-text-200 hover:text-text-100 hover:border-[#80848E] transition-colors bg-bg-0">
                                 <span>More</span>
                             </button>
                         </div>
@@ -677,56 +679,56 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
             {/* Edit Profile Modal */}
             {editProfileOpen && (
                 <div className="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center" onClick={() => setEditProfileOpen(false)}>
-                    <div className="bg-[#1E1F22] border border-[#2B2D31] rounded-lg shadow-2xl w-[320px] animate-fade-in" onClick={e => e.stopPropagation()}>
-                        <div className="flex items-center justify-between p-4 border-b border-[#2B2D31]">
-                            <h3 className="text-[15px] font-semibold text-[#E3E3E3]">Edit Profile</h3>
-                            <button onClick={() => setEditProfileOpen(false)} className="text-[#80848E] hover:text-[#E3E3E3] transition-colors">
+                    <div className="bg-bg-100 border border-bg-200 rounded-lg shadow-2xl w-[320px] animate-fade-in" onClick={e => e.stopPropagation()}>
+                        <div className="flex items-center justify-between p-4 border-b border-bg-200">
+                            <h3 className="text-[15px] font-semibold text-text-100">Edit Profile</h3>
+                            <button onClick={() => setEditProfileOpen(false)} className="text-text-300 hover:text-text-100 transition-colors">
                                 <X className="w-5 h-5" />
                             </button>
                         </div>
                         <div className="p-4 space-y-4">
                             <div className="flex items-center gap-3">
                                 <div className="relative w-16 h-16">
-                                    <div className="w-16 h-16 rounded-full bg-[#2B2D31] flex items-center justify-center text-[24px] font-bold text-[#80848E] overflow-hidden border border-[#35373C] cursor-pointer group" onClick={() => document.getElementById('avatar-input')?.click()}>
+                                    <div className="w-16 h-16 rounded-full bg-bg-200 flex items-center justify-center text-[24px] font-bold text-text-300 overflow-hidden border border-bg-300 cursor-pointer group" onClick={() => document.getElementById('avatar-input')?.click()}>
                                         {avatarUrl ? (
                                             <img src={avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
                                         ) : (
                                             <span>{(user?.username || 'A')[0].toUpperCase()}</span>
                                         )}
                                         <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-full">
-                                            <span className="text-[10px] text-white font-medium">{uploadingAvatar ? '...' : 'Edit'}</span>
+                                            <span className="text-[10px] text-text-100 font-medium">{uploadingAvatar ? '...' : 'Edit'}</span>
                                         </div>
                                     </div>
                                     <input id="avatar-input" type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleAvatarUpload(f); }} />
                                 </div>
                                 <div>
-                                    <div className="text-[14px] font-medium text-[#E3E3E3]">{user?.username || 'Anonymous'}</div>
-                                    <div className="text-[12px] text-[#80848E]">{user?.device_id ? `ID: ${user.device_id.slice(0, 12)}...` : 'Not signed in'}</div>
+                                    <div className="text-[14px] font-medium text-text-100">{user?.username || 'Anonymous'}</div>
+                                    <div className="text-[12px] text-text-300">{user?.device_id ? `ID: ${user.device_id.slice(0, 12)}...` : 'Not signed in'}</div>
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <label className="text-[12px] text-[#80848E] font-medium">Display Name</label>
+                                <label className="text-[12px] text-text-300 font-medium">Display Name</label>
                                 <input 
                                     type="text"
                                     value={displayName}
                                     onChange={(e) => setDisplayName(e.target.value)}
-                                    className="w-full bg-[#2B2D31] border border-[#35373C] rounded-md px-3 py-2 text-[13px] text-[#E3E3E3] focus:outline-none focus:border-[#4B4D53] transition-colors"
+                                    className="w-full bg-bg-200 border border-bg-300 rounded-md px-3 py-2 text-[13px] text-text-100 focus:outline-none focus:border-[#4B4D53] transition-colors"
                                     placeholder="Enter display name"
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-[12px] text-[#80848E] font-medium">Email</label>
+                                <label className="text-[12px] text-text-300 font-medium">Email</label>
                                 <input 
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full bg-[#2B2D31] border border-[#35373C] rounded-md px-3 py-2 text-[13px] text-[#E3E3E3] focus:outline-none focus:border-[#4B4D53] transition-colors"
+                                    className="w-full bg-bg-200 border border-bg-300 rounded-md px-3 py-2 text-[13px] text-text-100 focus:outline-none focus:border-[#4B4D53] transition-colors"
                                     placeholder="Enter email"
                                 />
                             </div>
                             {!user && (
-                                <div className="bg-[#2B2D31] rounded-md p-3">
-                                    <p className="text-[12px] text-[#80848E]">Sign in to save your profile across devices.</p>
+                                <div className="bg-bg-200 rounded-md p-3">
+                                    <p className="text-[12px] text-text-300">Sign in to save your profile across devices.</p>
                                     <a href="/signin" className="text-[12px] text-blue-400 hover:text-blue-300 mt-1 inline-block" onClick={() => setEditProfileOpen(false)}>Sign in</a>
                                 </div>
                             )}

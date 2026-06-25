@@ -227,7 +227,7 @@ export default function App() {
   )
 
   return (
-    <div className="h-screen w-full overflow-hidden bg-[#131314]">
+    <div className="h-screen w-full overflow-hidden bg-bg-0">
       <ChatFusionDemo 
         messages={messages} 
         onSendMessage={handleTextSend} 
