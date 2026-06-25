@@ -53,7 +53,7 @@ export default function LandingPage() {
                 <ul className="grid w-[220px] gap-2 p-2">
                   <li>
                     <NavigationMenuLink asChild>
-                      <Link to="/chat" className="block p-3 rounded-md hover:bg-[#2B2D31] transition-colors no-underline">
+                      <Link to="/about" className="block p-3 rounded-md hover:bg-[#2B2D31] transition-colors no-underline">
                         <div className="text-sm font-medium text-[#E3E3E3]">About Ana</div>
                         <p className="text-xs text-[#80848E] mt-0.5">Learn about the project</p>
                       </Link>
@@ -61,18 +61,18 @@ export default function LandingPage() {
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <a href="#" className="block p-3 rounded-md hover:bg-[#2B2D31] transition-colors no-underline">
+                      <Link to="/privacy" className="block p-3 rounded-md hover:bg-[#2B2D31] transition-colors no-underline">
                         <div className="text-sm font-medium text-[#E3E3E3]">Privacy Policy</div>
                         <p className="text-xs text-[#80848E] mt-0.5">How we handle your data</p>
-                      </a>
+                      </Link>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <a href="#" className="block p-3 rounded-md hover:bg-[#2B2D31] transition-colors no-underline">
+                      <Link to="/terms" className="block p-3 rounded-md hover:bg-[#2B2D31] transition-colors no-underline">
                         <div className="text-sm font-medium text-[#E3E3E3]">Terms of Use</div>
                         <p className="text-xs text-[#80848E] mt-0.5">Terms and conditions</p>
-                      </a>
+                      </Link>
                     </NavigationMenuLink>
                   </li>
                 </ul>
@@ -201,9 +201,10 @@ export default function LandingPage() {
             {/* Company */}
             <div className="space-y-3 text-sm">
               <span className="block font-medium text-[#E3E3E3]">Company</span>
-              {['About', 'Contact Us', 'Privacy Policy', 'Terms of Service'].map((item) => (
-                <a key={item} href="#" className="text-[#80848E] hover:text-[#E3E3E3] block duration-150">{item}</a>
-              ))}
+              <Link to="/about" className="text-[#80848E] hover:text-[#E3E3E3] block duration-150 text-sm">About</Link>
+              <Link to="/contact" className="text-[#80848E] hover:text-[#E3E3E3] block duration-150 text-sm">Contact Us</Link>
+              <Link to="/privacy" className="text-[#80848E] hover:text-[#E3E3E3] block duration-150 text-sm">Privacy Policy</Link>
+              <Link to="/terms" className="text-[#80848E] hover:text-[#E3E3E3] block duration-150 text-sm">Terms of Service</Link>
             </div>
 
             {/* Social */}
