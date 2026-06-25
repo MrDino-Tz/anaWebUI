@@ -21,9 +21,9 @@ const features = [
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#131314] text-[#E3E3E3] flex flex-col">
+    <div className="min-h-screen bg-bg-0 text-text-100 flex flex-col">
       {/* ── Header ── */}
-      <header className="flex items-center justify-between px-6 py-4 border-b border-[#2B2D31]">
+      <header className="flex items-center justify-between px-6 py-4 border-b border-bg-200">
         <Link to="/" className="flex items-center gap-3">
           <img src="/ana-logo.png" alt="Ana Logo" className="w-12 h-12 rounded-full object-cover" />
           <span className="text-2xl font-normal tracking-wide" style={{ fontFamily: 'Alphacorsa, sans-serif' }}>Ana Solar</span>
@@ -37,9 +37,9 @@ export default function LandingPage() {
                   {features.map((f) => (
                     <li key={f.title}>
                       <NavigationMenuLink asChild>
-                        <Link to="/chat" className="block p-3 rounded-md hover:bg-[#2B2D31] transition-colors no-underline">
-                          <div className="text-sm font-medium text-[#E3E3E3]">{f.title}</div>
-                          <p className="text-xs text-[#80848E] mt-0.5">{f.description}</p>
+                        <Link to="/chat" className="block p-3 rounded-md hover:bg-bg-200 transition-colors no-underline">
+                          <div className="text-sm font-medium text-text-100">{f.title}</div>
+                          <p className="text-xs text-text-300 mt-0.5">{f.description}</p>
                         </Link>
                       </NavigationMenuLink>
                     </li>
@@ -53,25 +53,25 @@ export default function LandingPage() {
                 <ul className="grid w-[220px] gap-2 p-2">
                   <li>
                     <NavigationMenuLink asChild>
-                      <Link to="/about" className="block p-3 rounded-md hover:bg-[#2B2D31] transition-colors no-underline">
-                        <div className="text-sm font-medium text-[#E3E3E3]">About Ana</div>
-                        <p className="text-xs text-[#80848E] mt-0.5">Learn about the project</p>
+                      <Link to="/about" className="block p-3 rounded-md hover:bg-bg-200 transition-colors no-underline">
+                        <div className="text-sm font-medium text-text-100">About Ana</div>
+                        <p className="text-xs text-text-300 mt-0.5">Learn about the project</p>
                       </Link>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <Link to="/privacy" className="block p-3 rounded-md hover:bg-[#2B2D31] transition-colors no-underline">
-                        <div className="text-sm font-medium text-[#E3E3E3]">Privacy Policy</div>
-                        <p className="text-xs text-[#80848E] mt-0.5">How we handle your data</p>
+                      <Link to="/privacy" className="block p-3 rounded-md hover:bg-bg-200 transition-colors no-underline">
+                        <div className="text-sm font-medium text-text-100">Privacy Policy</div>
+                        <p className="text-xs text-text-300 mt-0.5">How we handle your data</p>
                       </Link>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <Link to="/terms" className="block p-3 rounded-md hover:bg-[#2B2D31] transition-colors no-underline">
-                        <div className="text-sm font-medium text-[#E3E3E3]">Terms of Use</div>
-                        <p className="text-xs text-[#80848E] mt-0.5">Terms and conditions</p>
+                      <Link to="/terms" className="block p-3 rounded-md hover:bg-bg-200 transition-colors no-underline">
+                        <div className="text-sm font-medium text-text-100">Terms of Use</div>
+                        <p className="text-xs text-text-300 mt-0.5">Terms and conditions</p>
                       </Link>
                     </NavigationMenuLink>
                   </li>
@@ -97,11 +97,11 @@ export default function LandingPage() {
 
       {/* ── Hero ── */}
       <section className="flex-1 flex flex-col items-center justify-center px-6 py-20 text-center">
-        <img src="/ana-logo.png" alt="Ana Logo" className="w-20 h-20 rounded-full object-cover border border-[#35373C] mb-6" />
+        <img src="/ana-logo.png" alt="Ana Logo" className="w-20 h-20 rounded-full object-cover border border-bg-300 mb-6" />
         <h1 className="text-5xl sm:text-6xl font-medium text-white tracking-tight mb-4">
           Your Personal AI Assistant
         </h1>
-        <p className="text-lg text-[#80848E] max-w-xl mx-auto mb-10 leading-relaxed">
+        <p className="text-lg text-text-300 max-w-xl mx-auto mb-10 leading-relaxed">
           Ana GPA is your intelligent companion for conversation, document generation,
           knowledge management, and more. Powered by advanced AI, always ready to help.
         </p>
@@ -114,7 +114,7 @@ export default function LandingPage() {
           </Link>
           <Link
             to="/chat"
-            className="border border-[#2B2D31] text-[#A3A6AA] px-6 py-3 rounded-lg text-sm font-medium hover:bg-[#1E1F22] hover:text-[#E3E3E3] transition-colors"
+            className="border border-bg-200 text-text-200 px-6 py-3 rounded-lg text-sm font-medium hover:bg-bg-100 hover:text-text-100 transition-colors"
           >
             Try Anonymous Chat
           </Link>
@@ -122,7 +122,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── Features ── */}
-      <section className="px-6 py-16 border-t border-[#2B2D31]">
+      <section className="px-6 py-16 border-t border-bg-200">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-medium text-center text-white mb-12">
             Everything you need
@@ -163,11 +163,11 @@ export default function LandingPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="px-6 py-16 border-t border-[#2B2D31] text-center">
+      <section className="px-6 py-16 border-t border-bg-200 text-center">
         <h2 className="text-2xl font-medium text-white mb-4">
           Ready to meet Ana?
         </h2>
-        <p className="text-[#80848E] mb-8 max-w-md mx-auto">
+        <p className="text-text-300 mb-8 max-w-md mx-auto">
           Sign up for free and start your conversation. No credit card required.
         </p>
         <Link
@@ -179,42 +179,42 @@ export default function LandingPage() {
       </section>
 
       {/* ── Footer ── */}
-      <footer className="py-16 border-t border-[#2B2D31]">
+      <footer className="py-16 border-t border-bg-200">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-14 grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {/* Product */}
             <div className="space-y-3 text-sm">
-              <span className="block font-medium text-[#E3E3E3]">Product</span>
+              <span className="block font-medium text-text-100">Product</span>
               {['Ana GPA Robot', 'Ana Desktop', 'Ana Mobile'].map((item) => (
-                <a key={item} href="/chat" className="text-[#80848E] hover:text-[#E3E3E3] block duration-150">{item}</a>
+                <a key={item} href="/chat" className="text-text-300 hover:text-text-100 block duration-150">{item}</a>
               ))}
             </div>
 
             {/* Resources */}
             <div className="space-y-3 text-sm">
-              <span className="block font-medium text-[#E3E3E3]">Resources</span>
+              <span className="block font-medium text-text-100">Resources</span>
               {['Docs', 'Guides', 'Integration', 'Help', 'Pricing', 'Resources'].map((item) => (
-                <a key={item} href="#" className="text-[#80848E] hover:text-[#E3E3E3] block duration-150">{item}</a>
+                <a key={item} href="#" className="text-text-300 hover:text-text-100 block duration-150">{item}</a>
               ))}
             </div>
 
             {/* Company */}
             <div className="space-y-3 text-sm">
-              <span className="block font-medium text-[#E3E3E3]">Company</span>
-              <Link to="/about" className="text-[#80848E] hover:text-[#E3E3E3] block duration-150 text-sm">About</Link>
-              <Link to="/contact" className="text-[#80848E] hover:text-[#E3E3E3] block duration-150 text-sm">Contact Us</Link>
-              <Link to="/privacy" className="text-[#80848E] hover:text-[#E3E3E3] block duration-150 text-sm">Privacy Policy</Link>
-              <Link to="/terms" className="text-[#80848E] hover:text-[#E3E3E3] block duration-150 text-sm">Terms of Service</Link>
+              <span className="block font-medium text-text-100">Company</span>
+              <Link to="/about" className="text-text-300 hover:text-text-100 block duration-150 text-sm">About</Link>
+              <Link to="/contact" className="text-text-300 hover:text-text-100 block duration-150 text-sm">Contact Us</Link>
+              <Link to="/privacy" className="text-text-300 hover:text-text-100 block duration-150 text-sm">Privacy Policy</Link>
+              <Link to="/terms" className="text-text-300 hover:text-text-100 block duration-150 text-sm">Terms of Service</Link>
             </div>
 
             {/* Social */}
             <div className="space-y-3 text-sm">
-              <span className="block font-medium text-[#E3E3E3]">Social</span>
+              <span className="block font-medium text-text-100">Social</span>
               {[
                 { name: 'GitHub', icon: <GithubSvg /> },
                 { name: 'YouTube', icon: <YoutubeSvg /> },
               ].map(({ name, icon }) => (
-                <a key={name} href="#" className="text-[#80848E] hover:text-[#E3E3E3] block duration-150">
+                <a key={name} href="#" className="text-text-300 hover:text-text-100 block duration-150">
                   <span className="flex gap-2 items-center">
                     {icon}
                     {name}
@@ -225,13 +225,13 @@ export default function LandingPage() {
 
             {/* Brand */}
             <div className="flex justify-end">
-              <img src="/ana-logo.png" alt="Ana Logo" className="w-8 h-8 rounded-full object-cover border border-[#35373C]" />
+              <img src="/ana-logo.png" alt="Ana Logo" className="w-8 h-8 rounded-full object-cover border border-bg-300" />
             </div>
           </div>
 
-          <div className="mt-10 flex flex-wrap items-end justify-between gap-6 py-6 border-t border-[#2B2D31]">
+          <div className="mt-10 flex flex-wrap items-end justify-between gap-6 py-6 border-t border-bg-200">
             <TechQuote />
-            <span className="text-[#606368] text-sm">
+            <span className="text-text-400 text-sm">
               &copy; {new Date().getFullYear()} DTC Team — Ana GPA
             </span>
           </div>
@@ -243,10 +243,10 @@ export default function LandingPage() {
 
 function FeatureCard({ number, title, description }) {
   return (
-    <div className="bg-[#1E1F22] border border-[#2B2D31] rounded-lg p-6 hover:border-[#4B4D53] transition-colors">
-      <span className="text-xs text-[#606368] font-mono mb-3 block">{number}</span>
+    <div className="bg-bg-100 border border-bg-200 rounded-lg p-6 hover:border-[#4B4D53] transition-colors">
+      <span className="text-xs text-text-400 font-mono mb-3 block">{number}</span>
       <h3 className="text-base font-medium text-white mb-2">{title}</h3>
-      <p className="text-sm text-[#80848E] leading-relaxed">{description}</p>
+      <p className="text-sm text-text-300 leading-relaxed">{description}</p>
     </div>
   )
 }
@@ -276,7 +276,7 @@ function TechQuote() {
     return () => clearInterval(interval)
   }, [])
   return (
-    <span className={`text-[#80848E] text-sm transition-opacity duration-300 ${fade ? 'opacity-100' : 'opacity-0'}`}>
+    <span className={`text-text-300 text-sm transition-opacity duration-300 ${fade ? 'opacity-100' : 'opacity-0'}`}>
       &ldquo;{quotes[index]}&rdquo;
     </span>
   )

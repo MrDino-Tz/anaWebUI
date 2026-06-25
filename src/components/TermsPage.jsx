@@ -2,22 +2,22 @@ import { Link } from 'react-router-dom'
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-[#131314] text-[#E3E3E3] flex flex-col">
-      <header className="flex items-center justify-between px-6 py-4 border-b border-[#2B2D31]">
+    <div className="min-h-screen bg-bg-0 text-text-100 flex flex-col">
+      <header className="flex items-center justify-between px-6 py-4 border-b border-bg-200">
         <Link to="/" className="flex items-center gap-3">
           <img src="/ana-logo.png" alt="Ana Logo" className="w-10 h-10 rounded-full object-cover" />
           <span className="text-xl font-normal tracking-wide" style={{ fontFamily: 'Alphacorsa, sans-serif' }}>Ana Solar</span>
         </Link>
-        <Link to="/chat" className="text-sm text-[#A3A6AA] hover:text-white border border-[#2B2D31] px-4 py-2 rounded-lg transition-colors">
+        <Link to="/chat" className="text-sm text-text-200 hover:text-white border border-bg-200 px-4 py-2 rounded-lg transition-colors">
           Go to Chat
         </Link>
       </header>
 
       <main className="flex-1 max-w-3xl mx-auto px-6 py-16">
         <h1 className="text-4xl font-medium text-white mb-2">Terms of Service</h1>
-        <p className="text-sm text-[#606368] mb-8">Last updated: June 2026</p>
+        <p className="text-sm text-text-400 mb-8">Last updated: June 2026</p>
 
-        <section className="space-y-6 text-[15px] leading-relaxed text-[#A3A6AA]">
+        <section className="space-y-6 text-[15px] leading-relaxed text-text-200">
           <h2 className="text-xl font-medium text-white mt-8 mb-4">1. Acceptance of Terms</h2>
           <p>
             By accessing or using Ana GPA ("the Service"), you agree to be bound by these
@@ -76,14 +76,14 @@ export default function TermsPage() {
           <h2 className="text-xl font-medium text-white mt-8 mb-4">9. Contact</h2>
           <p>
             For questions about these terms, contact us at{' '}
-            <a href="mailto:legal@anagpa.com" className="text-[#A3A6AA] hover:text-white underline">
+            <a href="mailto:legal@anagpa.com" className="text-text-200 hover:text-white underline">
               legal@anagpa.com
             </a>.
           </p>
         </section>
       </main>
 
-      <footer className="border-t border-[#2B2D31] py-6 text-center text-sm text-[#606368]">
+      <footer className="border-t border-bg-200 py-6 text-center text-sm text-text-400">
         &copy; {new Date().getFullYear()} DTC Team — Ana GPA
       </footer>
     </div>
