@@ -6,7 +6,7 @@ function authHeaders(token) {
 
 export async function sendAudioToBackend(blob, history = [], model = '', token = '', username = '', deviceId = '') {
   const formData = new FormData()
-  formData.append('file', blob, 'recording.webm')
+  formData.append('file', blob, 'recording.wav')
   formData.append('persona', CONFIG.persona)
   formData.append('language', CONFIG.language)
   formData.append('model', model)

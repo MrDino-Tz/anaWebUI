@@ -95,10 +95,10 @@ export default function App() {
 
   const messagesToHistory = useCallback((msgs) => {
     return msgs
-      .filter(m => m.text && !m.text.startsWith('🎤') && !m.text.startsWith('⚠'))
+      .filter(m => m.text && m.text !== '🎤 Voice message' && !m.text.startsWith('⚠'))
       .map(m => ({
         role: m.type === 'user' ? 'user' : 'assistant',
-        content: m.text
+        content: m.text.replace(/^🎤\s*/, '')
       }))
   }, [])
 
@@ -120,11 +120,13 @@ export default function App() {
   const handleAudioSend = useCallback(async (blob) => {
     setStatus('processing')
     setIsProcessing(true)
-    addMessage('user', '🎤 Voice message')
     try {
       const history = messagesToHistory(messages)
       const token = user?.token
       const data = await sendAudioToBackend(blob, history, selectedModel, token, user?.username, user?.device_id)
+      if (data.transcript) {
+        addMessage('user', `🎤 ${data.transcript}`)
+      }
       if (data.audio_base64) {
         playBase64Audio(data.audio_base64)
       }

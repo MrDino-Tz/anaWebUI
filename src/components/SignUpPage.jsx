@@ -42,7 +42,7 @@ export default function SignUpPage() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Username"
-              className="w-full bg-bg-100 border border-bg-200 rounded-lg px-4 py-3 text-text-100 text-sm placeholder:text-text-300 focus:outline-none focus:border-[#4B4D53] transition-colors"
+              className="w-full bg-bg-100 border border-bg-200 rounded-lg px-4 py-3 text-text-100 text-sm placeholder:text-text-300 focus:outline-none focus:border-bg-400 transition-colors"
               required
               autoFocus
             />
@@ -53,7 +53,7 @@ export default function SignUpPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email (optional)"
-              className="w-full bg-bg-100 border border-bg-200 rounded-lg px-4 py-3 text-text-100 text-sm placeholder:text-text-300 focus:outline-none focus:border-[#4B4D53] transition-colors"
+              className="w-full bg-bg-100 border border-bg-200 rounded-lg px-4 py-3 text-text-100 text-sm placeholder:text-text-300 focus:outline-none focus:border-bg-400 transition-colors"
             />
           </div>
           <div>
@@ -62,7 +62,7 @@ export default function SignUpPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              className="w-full bg-bg-100 border border-bg-200 rounded-lg px-4 py-3 text-text-100 text-sm placeholder:text-text-300 focus:outline-none focus:border-[#4B4D53] transition-colors"
+              className="w-full bg-bg-100 border border-bg-200 rounded-lg px-4 py-3 text-text-100 text-sm placeholder:text-text-300 focus:outline-none focus:border-bg-400 transition-colors"
               required
             />
           </div>
@@ -72,7 +72,7 @@ export default function SignUpPage() {
               value={confirm}
               onChange={(e) => setConfirm(e.target.value)}
               placeholder="Confirm password"
-              className="w-full bg-bg-100 border border-bg-200 rounded-lg px-4 py-3 text-text-100 text-sm placeholder:text-text-300 focus:outline-none focus:border-[#4B4D53] transition-colors"
+              className="w-full bg-bg-100 border border-bg-200 rounded-lg px-4 py-3 text-text-100 text-sm placeholder:text-text-300 focus:outline-none focus:border-bg-400 transition-colors"
               required
             />
             {confirm && password !== confirm && (

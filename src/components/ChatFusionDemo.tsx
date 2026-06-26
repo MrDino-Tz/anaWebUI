@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { Search, Plus, MessageSquare, HelpCircle, Settings, ChevronDown, Share2, Paperclip, Image as ImageIcon, Zap, ArrowUp, Code, MessageCircle, Menu, X, Diamond, Activity, MoreHorizontal, Check, PanelLeftClose, Copy } from 'lucide-react';
+import { Search, Plus, MessageSquare, HelpCircle, Settings, ChevronDown, Share2, Paperclip, Image as ImageIcon, Zap, ArrowUp, Code, MessageCircle, Menu, X, Diamond, Activity, MoreHorizontal, Check, PanelLeftClose, Copy, Mic } from 'lucide-react';
 import { useAudioRecorder } from '../hooks/useAudioRecorder';
 import { fetchModels } from '../hooks/useBackend';
 import MarkdownRenderer from './MarkdownRenderer';
 import ThemeToggle from './ThemeToggle';
+import VoiceChatView from './VoiceChatView';
 import CONFIG from '../config';
 
 function timeSince(date: Date): string {
@@ -77,6 +78,7 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
     const [editProfileOpen, setEditProfileOpen] = useState(false);
+    const [voiceMode, setVoiceMode] = useState(false);
     const [displayName, setDisplayName] = useState('');
     const [email, setEmail] = useState('');
     const [avatarUrl, setAvatarUrl] = useState('');
@@ -269,8 +271,15 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                     </div>
                 </div>
 
-                {/* Bottom: Home and User */}
+                {/* Bottom: Voice Chat, Home and User */}
                 <div className="p-3 space-y-[2px] border-t border-bg-200 mt-auto">
+                    <button 
+                        onClick={() => { setVoiceMode(true); setIsSidebarOpen(false); }}
+                        className="w-full flex items-center gap-3 px-3 py-2 hover:bg-bg-200 rounded-lg text-[13px] text-text-200 hover:text-text-100 transition-colors"
+                    >
+                        <Mic className="w-[18px] h-[18px]" />
+                        <span>Voice Chat</span>
+                    </button>
                     <a href="/" className="w-full flex items-center gap-3 px-3 py-2 hover:bg-bg-200 rounded-lg text-[13px] text-text-200 hover:text-text-100 transition-colors no-underline">
                         <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                         <span>Home</span>
@@ -356,6 +365,17 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
 
             {/* Main Area */}
             <div className={`flex-1 flex flex-col h-full bg-bg-0 relative min-w-0 transition-all duration-300 ${isSidebarOpen ? 'lg:ml-[260px]' : 'lg:ml-0'}`}>
+                {voiceMode ? (
+                    <VoiceChatView
+                        messages={messages}
+                        isProcessing={isProcessing}
+                        status={status}
+                        isRecording={isRecording}
+                        startRecording={startRecording}
+                        stopRecording={stopRecording}
+                        onExitVoiceMode={() => setVoiceMode(false)}
+                    />
+                ) : (<>
                 
                 {/* Topbar */}
                 <div className="h-[60px] flex items-center justify-between px-3 sm:px-6 flex-shrink-0 w-full z-10">
@@ -474,9 +494,9 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                                         <img src="/ana-logo.png" alt="Ana" className="w-full h-full object-cover" />
                                     </div>
                                     <div className="flex items-center gap-3 max-w-[85%] rounded-lg px-5 py-3.5 bg-transparent text-text-100 rounded-bl-sm">
-                                        <div className="w-2 h-2 bg-[#80848E] rounded-full animate-pulse" />
-                                        <div className="w-2 h-2 bg-[#80848E] rounded-full animate-pulse delay-75" />
-                                        <div className="w-2 h-2 bg-[#80848E] rounded-full animate-pulse delay-150" />
+                                        <div className="w-2 h-2 bg-text-300 rounded-full animate-pulse" />
+                                        <div className="w-2 h-2 bg-text-300 rounded-full animate-pulse delay-75" />
+                                        <div className="w-2 h-2 bg-text-300 rounded-full animate-pulse delay-150" />
                                     </div>
                                 </div>
                             )}
@@ -485,7 +505,7 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
 
                         {/* Pinned Input Area for Chat */}
                         <div className="py-4 bg-bg-0">
-                            <div className="w-full bg-bg-100 rounded-lg border border-bg-200 focus-within:border-[#4B4D53] transition-colors p-3 flex flex-col shadow-sm">
+                            <div className="w-full bg-bg-100 rounded-lg border border-bg-200 focus-within:border-bg-400 transition-colors p-3 flex flex-col shadow-sm">
                                 {/* Attachment Previews */}
                                 {attachments.length > 0 && (
                                     <div className="flex flex-wrap gap-2 mb-3 pb-3 border-b border-bg-200">
@@ -555,7 +575,7 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                         </h1>
 
                         {/* Large Input Box */}
-                        <div className="w-full bg-bg-100 rounded-lg border border-bg-200 p-4 sm:p-5 flex flex-col min-h-[160px] sm:min-h-[180px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-colors focus-within:border-[#4B4D53] animate-fade-in relative">
+                        <div className="w-full bg-bg-100 rounded-lg border border-bg-200 p-4 sm:p-5 flex flex-col min-h-[160px] sm:min-h-[180px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-colors focus-within:border-bg-400 animate-fade-in relative">
                             {/* Attachment Previews */}
                             {attachments.length > 0 && (
                                 <div className="flex flex-wrap gap-2 mb-3 pb-3 border-b border-bg-200">
@@ -656,25 +676,26 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
 
                         {/* Action Pills */}
                         <div className="flex flex-wrap items-center justify-center gap-3 w-full mb-10 animate-fade-in">
-                                    <button className="flex items-center gap-2 px-4 py-2 border border-dashed border-[#4B4D53] rounded-lg text-[13px] text-text-200 hover:text-text-100 hover:border-[#80848E] transition-colors bg-bg-0">
+                                    <button className="flex items-center gap-2 px-4 py-2 border border-dashed border-bg-400 rounded-lg text-[13px] text-text-200 hover:text-text-100 hover:border-text-300 transition-colors bg-bg-0">
                                 <ImageIcon className="w-4 h-4" />
                                 <span>Create images</span>
                             </button>
-                                    <button className="flex items-center gap-2 px-4 py-2 border border-dashed border-[#4B4D53] rounded-lg text-[13px] text-text-200 hover:text-text-100 hover:border-[#80848E] transition-colors bg-bg-0">
+                                    <button className="flex items-center gap-2 px-4 py-2 border border-dashed border-bg-400 rounded-lg text-[13px] text-text-200 hover:text-text-100 hover:border-text-300 transition-colors bg-bg-0">
                                 <Search className="w-4 h-4" />
                                 <span>Analyze images</span>
                             </button>
-                                    <button className="flex items-center gap-2 px-4 py-2 border border-dashed border-[#4B4D53] rounded-lg text-[13px] text-text-200 hover:text-text-100 hover:border-[#80848E] transition-colors bg-bg-0">
+                                    <button className="flex items-center gap-2 px-4 py-2 border border-dashed border-bg-400 rounded-lg text-[13px] text-text-200 hover:text-text-100 hover:border-text-300 transition-colors bg-bg-0">
                                 <Code className="w-4 h-4" />
                                 <span>Code</span>
                             </button>
-                                    <button className="flex items-center gap-2 px-4 py-2 border border-dashed border-[#4B4D53] rounded-lg text-[13px] text-text-200 hover:text-text-100 hover:border-[#80848E] transition-colors bg-bg-0">
+                                    <button className="flex items-center gap-2 px-4 py-2 border border-dashed border-bg-400 rounded-lg text-[13px] text-text-200 hover:text-text-100 hover:border-text-300 transition-colors bg-bg-0">
                                 <span>More</span>
                             </button>
                         </div>
 
                     </div>
                 )}
+                </>)}
             </div>
             {/* Edit Profile Modal */}
             {editProfileOpen && (
@@ -712,7 +733,7 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                                     type="text"
                                     value={displayName}
                                     onChange={(e) => setDisplayName(e.target.value)}
-                                    className="w-full bg-bg-200 border border-bg-300 rounded-md px-3 py-2 text-[13px] text-text-100 focus:outline-none focus:border-[#4B4D53] transition-colors"
+                                    className="w-full bg-bg-200 border border-bg-300 rounded-md px-3 py-2 text-[13px] text-text-100 focus:outline-none focus:border-bg-400 transition-colors"
                                     placeholder="Enter display name"
                                 />
                             </div>
@@ -722,7 +743,7 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full bg-bg-200 border border-bg-300 rounded-md px-3 py-2 text-[13px] text-text-100 focus:outline-none focus:border-[#4B4D53] transition-colors"
+                                    className="w-full bg-bg-200 border border-bg-300 rounded-md px-3 py-2 text-[13px] text-text-100 focus:outline-none focus:border-bg-400 transition-colors"
                                     placeholder="Enter email"
                                 />
                             </div>

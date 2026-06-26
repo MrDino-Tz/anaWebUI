@@ -245,7 +245,7 @@ export default function LandingPage() {
 
 function FeatureCard({ number, title, description }) {
   return (
-    <div className="bg-bg-100 border border-bg-200 rounded-lg p-6 hover:border-[#4B4D53] transition-colors">
+    <div className="bg-bg-100 border border-bg-200 rounded-lg p-6 hover:border-bg-400 transition-colors">
       <span className="text-xs text-text-400 font-mono mb-3 block">{number}</span>
       <h3 className="text-base font-medium text-text-100 mb-2">{title}</h3>
       <p className="text-sm text-text-300 leading-relaxed">{description}</p>

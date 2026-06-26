@@ -6,6 +6,7 @@
   --color-bg-100: var(--bg-100);
   --color-bg-200: var(--bg-200);
   --color-bg-300: var(--bg-300);
+  --color-bg-400: var(--bg-400);
   --color-text-100: var(--text-100);
   --color-text-200: var(--text-200);
   --color-text-300: var(--text-300);
@@ -42,6 +43,7 @@
   --bg-100: #FFFFFF;
   --bg-200: #E8E8EA;
   --bg-300: #D0D0D4;
+  --bg-400: #B8B8BE;
   --text-100: #1A1A1A;
   --text-200: #4A4A4A;
   --text-300: #6B6B6B;
@@ -59,6 +61,7 @@
   --bg-100: #1E1F22;
   --bg-200: #2B2D31;
   --bg-300: #35373C;
+  --bg-400: #4B4D53;
   --text-100: #E3E3E3;
   --text-200: #A3A6AA;
   --text-300: #80848E;
