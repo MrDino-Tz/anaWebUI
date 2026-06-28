@@ -8,6 +8,7 @@ export function ThemeProvider({ children }) {
     if (stored) return stored
     return 'dark'
   })
+  const [transitionOrigin, setTransitionOrigin] = useState(null)
 
   useEffect(() => {
     const root = document.documentElement
@@ -19,11 +20,26 @@ export function ThemeProvider({ children }) {
     localStorage.setItem('ana-theme', theme)
   }, [theme])
 
-  const toggle = () => setTheme(t => t === 'dark' ? 'light' : 'dark')
+  useEffect(() => {
+    if (!transitionOrigin) return
+    const timer = window.setTimeout(() => setTransitionOrigin(null), 750)
+    return () => window.clearTimeout(timer)
+  }, [transitionOrigin])
+
+  const toggle = (origin) => {
+    setTheme(t => t === 'dark' ? 'light' : 'dark')
+    setTransitionOrigin(origin ?? null)
+  }
 
   return (
     <ThemeContext.Provider value={{ theme, toggle }}>
       {children}
+      {transitionOrigin ? (
+        <div
+          className={`theme-transition-layer ${transitionOrigin ? 'active' : ''}`}
+          style={{ left: `${transitionOrigin.x}px`, top: `${transitionOrigin.y}px` }}
+        />
+      ) : null}
     </ThemeContext.Provider>
   )
 }

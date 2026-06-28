@@ -107,6 +107,27 @@ html, body, #root, body * {
   animation: theme-ripple 0.75s ease-out forwards;
   z-index: 9999;
   opacity: 0.95;
+  box-shadow: 0 0 0 1px var(--bg-300);
+}
+
+.theme-transition-layer {
+  position: fixed;
+  width: 0;
+  height: 0;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9998;
+  background: var(--bg-0);
+  opacity: 0;
+  will-change: width, height, opacity;
+  transition: width 0.75s cubic-bezier(0.22, 1, 0.36, 1), height 0.75s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease, background-color 0.35s ease;
+}
+
+.theme-transition-layer.active {
+  width: 220vmax;
+  height: 220vmax;
+  opacity: 1;
 }
 
 @keyframes theme-ripple {

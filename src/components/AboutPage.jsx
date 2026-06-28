@@ -57,7 +57,7 @@ export default function AboutPage() {
       </main>
 
       <footer className="border-t border-bg-200 py-6 text-center text-sm text-text-400">
-        &copy; {new Date().getFullYear()} DTC Team — Ana GPA
+        &copy; {new Date().getFullYear()} DTC Team — Ana AGI
       </footer>
     </div>
   )

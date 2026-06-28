@@ -27,7 +27,7 @@ export default function LandingPage() {
       <header className="flex items-center justify-between px-6 py-4 border-b border-bg-200">
         <Link to="/" className="flex items-center gap-3">
           <img src={`${import.meta.env.BASE_URL}ana-logo.png`} alt="Ana Logo" className="w-12 h-12 rounded-full object-cover" />
-          <span className="text-2xl font-normal tracking-wide" style={{ fontFamily: 'Alphacorsa, sans-serif' }}>Ana Solar</span>
+          <span className="text-2xl font-normal tracking-wide" style={{ fontFamily: 'Alphacorsa, sans-serif' }}>Ana AGI</span>
         </Link>
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList>

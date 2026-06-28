@@ -15,13 +15,18 @@ export default function ThemeToggle() {
 
   const handleClick = () => {
     const rect = buttonRef.current?.getBoundingClientRect()
-    if (rect) {
+    const origin = rect
+      ? { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 }
+      : null
+
+    if (origin) {
       setRipple({
-        x: rect.left + rect.width / 2,
-        y: rect.top + rect.height / 2,
+        x: origin.x,
+        y: origin.y,
       })
     }
-    toggle()
+
+    toggle(origin)
   }
 
   return (
@@ -38,7 +43,7 @@ export default function ThemeToggle() {
       {ripple ? (
         <div
           className="theme-toggle-ripple"
-          style={{ left: `${ripple.x}px`, top: `${ripple.y}px`, background: 'var(--accent)' }}
+          style={{ left: `${ripple.x}px`, top: `${ripple.y}px`, background: 'var(--bg-100)' }}
         />
       ) : null}
     </>
