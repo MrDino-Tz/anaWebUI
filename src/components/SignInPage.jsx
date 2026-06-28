@@ -25,8 +25,12 @@ export default function SignInPage() {
       <div className="w-full max-w-sm mx-4">
         <div className="text-center mb-8">
           <Link to="/" className="inline-block">
-            <div className="w-16 h-16 rounded-full bg-bg-200 border border-bg-300 flex items-center justify-center mx-auto mb-4 hover:bg-bg-300 transition-colors">
-              <span className="text-2xl font-serif font-bold text-text-100">A</span>
+            <div className="w-16 h-16 rounded-full bg-bg-200 border border-bg-300 overflow-hidden mx-auto mb-4 hover:bg-bg-300 transition-colors">
+              <img
+                src={`${import.meta.env.BASE_URL}ana-logo.png`}
+                alt="Ana Logo"
+                className="w-full h-full object-cover"
+              />
             </div>
           </Link>
           <h1 className="text-2xl font-medium text-text-100">Welcome Back to Ana GPA</h1>
