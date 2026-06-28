@@ -188,7 +188,7 @@ export default function LandingPage() {
             <div className="space-y-3 text-sm">
               <span className="block font-medium text-text-100">Product</span>
               {['Ana GPA Robot', 'Ana Desktop', 'Ana Mobile'].map((item) => (
-                <a key={item} href="/chat" className="text-text-300 hover:text-text-100 block duration-150">{item}</a>
+                <Link key={item} to="/chat" className="text-text-300 hover:text-text-100 block duration-150">{item}</Link>
               ))}
             </div>
 

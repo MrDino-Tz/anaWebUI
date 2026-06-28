@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { Search, Plus, MessageSquare, HelpCircle, Settings, ChevronDown, Share2, Paperclip, Image as ImageIcon, Zap, ArrowUp, Code, MessageCircle, Menu, X, Diamond, Activity, MoreHorizontal, Check, PanelLeftClose, Copy, Mic } from 'lucide-react';
 import { useAudioRecorder } from '../hooks/useAudioRecorder';
 import { fetchModels } from '../hooks/useBackend';
@@ -218,9 +219,9 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                 {/* Header */}
                 <div className="flex items-center justify-between p-4 pb-2">
                     <div className="flex items-center gap-2">
-                        <a href="/" className="w-8 h-8 rounded-full bg-bg-200 border border-bg-300 flex items-center justify-center overflow-hidden hover:bg-bg-300 transition-colors">
+                        <Link to="/" className="w-8 h-8 rounded-full bg-bg-200 border border-bg-300 flex items-center justify-center overflow-hidden hover:bg-bg-300 transition-colors">
                             <img src="/ana-logo.png" alt="Ana" className="w-full h-full object-cover" />
-                        </a>
+                        </Link>
                         <div className="w-8 h-8 flex items-center justify-center rounded-md cursor-pointer hover:bg-bg-300 transition-colors text-text-200">
                             <Search className="w-[18px] h-[18px]" />
                         </div>
@@ -280,10 +281,10 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                         <Mic className="w-[18px] h-[18px]" />
                         <span>Voice Chat</span>
                     </button>
-                    <a href="/" className="w-full flex items-center gap-3 px-3 py-2 hover:bg-bg-200 rounded-lg text-[13px] text-text-200 hover:text-text-100 transition-colors no-underline">
+                    <Link to="/" className="w-full flex items-center gap-3 px-3 py-2 hover:bg-bg-200 rounded-lg text-[13px] text-text-200 hover:text-text-100 transition-colors no-underline">
                         <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                         <span>Home</span>
-                    </a>
+                    </Link>
                     <div className="relative" ref={userMenuRef}>
                         <button 
                             onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
@@ -349,12 +350,12 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                                             </button>
                                         </>
                                     ) : (
-                                        <a 
-                                            href="/signin"
+                                        <Link 
+                                            to="/signin"
                                             className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-white text-black text-[13px] font-medium rounded-lg hover:bg-[#E3E3E3] transition-colors no-underline"
                                         >
                                             Sign in
-                                        </a>
+                                        </Link>
                                     )}
                                 </div>
                             </div>
