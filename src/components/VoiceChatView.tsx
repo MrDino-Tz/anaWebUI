@@ -150,7 +150,7 @@ export default function VoiceChatView({
         </button>
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-bg-200 flex items-center justify-center overflow-hidden">
-            <img src="/ana-logo.png" alt="Ana" className="w-full h-full object-cover" />
+            <img src={`${import.meta.env.BASE_URL}ana-logo.png`} alt="Ana" className="w-full h-full object-cover" />
           </div>
           <div>
             <div className="text-[14px] font-medium text-text-100">Voice Chat</div>
@@ -189,7 +189,7 @@ export default function VoiceChatView({
               >
                 {msg.type === 'ana' && (
                   <div className="w-8 h-8 rounded-full bg-bg-200 border border-bg-300 flex items-center justify-center mr-3 mt-1 shrink-0 overflow-hidden">
-                    <img src="/ana-logo.png" alt="Ana" className="w-full h-full object-cover" />
+                    <img src={`${import.meta.env.BASE_URL}ana-logo.png`} alt="Ana" className="w-full h-full object-cover" />
                   </div>
                 )}
                 <div
@@ -222,7 +222,7 @@ export default function VoiceChatView({
             {isProcessing && (
               <div className="flex w-full justify-start">
                 <div className="w-8 h-8 rounded-full bg-bg-200 border border-bg-300 flex items-center justify-center mr-3 mt-1 shrink-0 overflow-hidden">
-                  <img src="/ana-logo.png" alt="Ana" className="w-full h-full object-cover" />
+                  <img src={`${import.meta.env.BASE_URL}ana-logo.png`} alt="Ana" className="w-full h-full object-cover" />
                 </div>
                 <div className="flex items-center gap-2 px-4 py-3">
                   <div className="w-2 h-2 bg-text-300 rounded-full animate-pulse" />

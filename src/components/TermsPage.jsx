@@ -6,7 +6,7 @@ export default function TermsPage() {
     <div className="min-h-screen bg-bg-0 text-text-100 flex flex-col">
       <header className="flex items-center justify-between px-6 py-4 border-b border-bg-200">
         <Link to="/" className="flex items-center gap-3">
-          <img src="/ana-logo.png" alt="Ana Logo" className="w-10 h-10 rounded-full object-cover" />
+          <img src={`${import.meta.env.BASE_URL}ana-logo.png`} alt="Ana Logo" className="w-10 h-10 rounded-full object-cover" />
           <span className="text-xl font-normal tracking-wide" style={{ fontFamily: 'Alphacorsa, sans-serif' }}>Ana Solar</span>
         </Link>
         <div className="flex items-center gap-3">

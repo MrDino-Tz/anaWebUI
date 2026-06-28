@@ -26,7 +26,7 @@ export default function LandingPage() {
       {/* ── Header ── */}
       <header className="flex items-center justify-between px-6 py-4 border-b border-bg-200">
         <Link to="/" className="flex items-center gap-3">
-          <img src="/ana-logo.png" alt="Ana Logo" className="w-12 h-12 rounded-full object-cover" />
+          <img src={`${import.meta.env.BASE_URL}ana-logo.png`} alt="Ana Logo" className="w-12 h-12 rounded-full object-cover" />
           <span className="text-2xl font-normal tracking-wide" style={{ fontFamily: 'Alphacorsa, sans-serif' }}>Ana Solar</span>
         </Link>
         <NavigationMenu className="hidden md:flex">
@@ -99,7 +99,7 @@ export default function LandingPage() {
 
       {/* ── Hero ── */}
       <section className="flex-1 flex flex-col items-center justify-center px-6 py-20 text-center">
-        <img src="/ana-logo.png" alt="Ana Logo" className="w-20 h-20 rounded-full object-cover border border-bg-300 mb-6" />
+        <img src={`${import.meta.env.BASE_URL}ana-logo.png`} alt="Ana Logo" className="w-20 h-20 rounded-full object-cover border border-bg-300 mb-6" />
         <h1 className="text-5xl sm:text-6xl font-medium text-text-100 tracking-tight mb-4">
           Your Personal AI Assistant
         </h1>
@@ -227,7 +227,7 @@ export default function LandingPage() {
 
             {/* Brand */}
             <div className="flex justify-end">
-              <img src="/ana-logo.png" alt="Ana Logo" className="w-8 h-8 rounded-full object-cover border border-bg-300" />
+              <img src={`${import.meta.env.BASE_URL}ana-logo.png`} alt="Ana Logo" className="w-8 h-8 rounded-full object-cover border border-bg-300" />
             </div>
           </div>
 

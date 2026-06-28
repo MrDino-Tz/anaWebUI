@@ -7,7 +7,7 @@ export default function Sidebar({ onSettingsClick }) {
     <aside className="sidebar">
       {/* Brand */}
       <div className="sb-brand">
-        <span className="sb-logo"><img src="/ana-logo.png" alt="Ana Logo" style={{width:'28px', height:'28px', borderRadius:'50%', objectFit:'cover'}} /></span>
+        <span className="sb-logo"><img src={`${import.meta.env.BASE_URL}ana-logo.png`} alt="Ana Logo" style={{width:'28px', height:'28px', borderRadius:'50%', objectFit:'cover'}} /></span>
         <button className="sb-brand-icon" title="New window">
           <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg>
         </button>

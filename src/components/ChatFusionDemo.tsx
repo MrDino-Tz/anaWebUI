@@ -220,7 +220,7 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                 <div className="flex items-center justify-between p-4 pb-2">
                     <div className="flex items-center gap-2">
                         <Link to="/" className="w-8 h-8 rounded-full bg-bg-200 border border-bg-300 flex items-center justify-center overflow-hidden hover:bg-bg-300 transition-colors">
-                            <img src="/ana-logo.png" alt="Ana" className="w-full h-full object-cover" />
+                            <img src={`${import.meta.env.BASE_URL}ana-logo.png`} alt="Ana" className="w-full h-full object-cover" />
                         </Link>
                         <div className="w-8 h-8 flex items-center justify-center rounded-md cursor-pointer hover:bg-bg-300 transition-colors text-text-200">
                             <Search className="w-[18px] h-[18px]" />
@@ -443,7 +443,7 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                                 <div key={msg.id} className={`flex w-full group ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
                                     {msg.type === 'ana' && (
                                         <div className="w-8 h-8 rounded-full bg-bg-200 border border-bg-300 flex items-center justify-center mr-3 mt-1 shrink-0 overflow-hidden">
-                                            <img src="/ana-logo.png" alt="Ana" className="w-full h-full object-cover" />
+                                            <img src={`${import.meta.env.BASE_URL}ana-logo.png`} alt="Ana" className="w-full h-full object-cover" />
                                         </div>
                                     )}
                                     <div className={`relative max-w-[90%] sm:max-w-[85%] rounded-lg px-4 sm:px-5 py-3 sm:py-3.5 text-[14px] sm:text-[15px] leading-relaxed shadow-sm font-sans
@@ -492,7 +492,7 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                             {isProcessing && (
                                 <div className="flex w-full justify-start animate-fade-in">
                                     <div className="w-8 h-8 rounded-full bg-bg-200 border border-bg-300 flex items-center justify-center mr-3 mt-1 shrink-0 overflow-hidden">
-                                        <img src="/ana-logo.png" alt="Ana" className="w-full h-full object-cover" />
+                                        <img src={`${import.meta.env.BASE_URL}ana-logo.png`} alt="Ana" className="w-full h-full object-cover" />
                                     </div>
                                     <div className="flex items-center gap-3 max-w-[85%] rounded-lg px-5 py-3.5 bg-transparent text-text-100 rounded-bl-sm">
                                         <div className="w-2 h-2 bg-text-300 rounded-full animate-pulse" />
@@ -751,7 +751,7 @@ const ChatFusionDemo: React.FC<ChatFusionDemoProps> = ({
                             {!user && (
                                 <div className="bg-bg-200 rounded-md p-3">
                                     <p className="text-[12px] text-text-300">Sign in to save your profile across devices.</p>
-                                    <a href="/signin" className="text-[12px] text-blue-400 hover:text-blue-300 mt-1 inline-block" onClick={() => setEditProfileOpen(false)}>Sign in</a>
+                                    <Link to="/signin" className="text-[12px] text-blue-400 hover:text-blue-300 mt-1 inline-block" onClick={() => setEditProfileOpen(false)}>Sign in</Link>
                                 </div>
                             )}
                         </div>
