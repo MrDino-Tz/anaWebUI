@@ -234,7 +234,7 @@ export default function LandingPage() {
           <div className="mt-10 flex flex-wrap items-end justify-between gap-6 py-6 border-t border-bg-200">
             <TechQuote />
             <span className="text-text-400 text-sm">
-              &copy; {new Date().getFullYear()} DTC Team — Ana GPA
+              &copy; {new Date().getFullYear()} DTC Team — Ana AGI
             </span>
           </div>
         </div>
