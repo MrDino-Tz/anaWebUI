@@ -94,7 +94,13 @@ export default function VoiceChatView({
         const recognition = new SpeechRecognition()
         recognition.continuous = true
         recognition.interimResults = true
-        recognition.lang = 'en-US'
+
+        // Detect language from last few messages
+        const lastMsgs = messages.slice(-4)
+        const hasSwahili = lastMsgs.some(m =>
+          /(habari|jambo|sijambo|shikamoo|marahaba|asante|tafadhali|samahani|ndio|hapana|sawa|kwa heri|lala|nzuri|mzuri|kiswahili|naam)/i.test(m.text)
+        )
+        recognition.lang = hasSwahili ? 'sw-TZ' : 'en-US'
 
         recognition.onresult = (event: any) => {
           let interim = ''
