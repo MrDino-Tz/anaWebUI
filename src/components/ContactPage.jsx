@@ -1,26 +1,15 @@
-import { Link } from 'react-router-dom'
-import ThemeToggle from './ThemeToggle'
+import Footer from './Footer'
+import Header from './Header'
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-bg-0 text-text-100 flex flex-col">
-      <header className="flex items-center justify-between px-6 py-4 border-b border-bg-200">
-        <Link to="/" className="flex items-center gap-3">
-          <img src={`${import.meta.env.BASE_URL}ana-logo.png`} alt="Ana Logo" className="w-10 h-10 rounded-full object-cover" />
-          <span className="text-xl font-normal tracking-wide" style={{ fontFamily: 'Alphacorsa, sans-serif' }}>Ana Solar</span>
-        </Link>
-        <div className="flex items-center gap-3">
-          <ThemeToggle />
-          <Link to="/chat" className="text-sm text-text-200 hover:text-text-100 border border-bg-200 px-4 py-2 rounded-lg transition-colors">
-            Go to Chat
-          </Link>
-        </div>
-      </header>
+      <Header />
 
-      <main className="flex-1 max-w-3xl mx-auto px-6 py-16">
-        <h1 className="text-4xl font-medium text-text-100 mb-8">Contact Us</h1>
+      <main className="flex-1 max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <h1 className="text-3xl sm:text-4xl font-medium text-text-100 mb-8">Contact Us</h1>
 
-        <section className="space-y-6 text-[15px] leading-relaxed text-text-200">
+        <section className="space-y-6 text-sm sm:text-[15px] leading-relaxed text-text-200">
           <p>
             We'd love to hear from you. Whether you have a question, feedback,
             or a partnership opportunity, reach out to us through any of the
@@ -63,9 +52,7 @@ export default function ContactPage() {
         </section>
       </main>
 
-      <footer className="border-t border-bg-200 py-6 text-center text-sm text-text-400">
-        &copy; {new Date().getFullYear()} DTC Team — Ana GPA
-      </footer>
+      <Footer />
     </div>
   )
 }

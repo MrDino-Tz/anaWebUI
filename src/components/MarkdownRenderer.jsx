@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import DocumentCard from './DocumentCard'
 
 const KEYWORDS = {
   python: {
@@ -407,7 +408,11 @@ export default function MarkdownRenderer({ content }) {
           ul({ children }) { return <ul className="md-ul">{children}</ul> },
           ol({ children }) { return <ol className="md-ol">{children}</ol> },
           li({ children }) { return <li className="md-li">{children}</li> },
-          a({ children, href }) { return <a className="md-a" href={href} target="_blank" rel="noopener noreferrer">{children}</a> },
+          a({ children, href }) {
+            const isDoc = href && /\.(pdf|docx?|xlsx?|pptx?|txt|md)(\?|$)/i.test(href)
+            if (isDoc) return <DocumentCard href={href}>{children}</DocumentCard>
+            return <a className="md-a" href={href} target="_blank" rel="noopener noreferrer">{children}</a>
+          },
           blockquote({ children }) { return <blockquote className="md-blockquote">{children}</blockquote> },
           hr() { return <hr className="md-hr" /> },
           table({ children }) { return <table className="md-table">{children}</table> },

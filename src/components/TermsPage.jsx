@@ -1,27 +1,16 @@
-import { Link } from 'react-router-dom'
-import ThemeToggle from './ThemeToggle'
+import Footer from './Footer'
+import Header from './Header'
 
 export default function TermsPage() {
   return (
     <div className="min-h-screen bg-bg-0 text-text-100 flex flex-col">
-      <header className="flex items-center justify-between px-6 py-4 border-b border-bg-200">
-        <Link to="/" className="flex items-center gap-3">
-          <img src={`${import.meta.env.BASE_URL}ana-logo.png`} alt="Ana Logo" className="w-10 h-10 rounded-full object-cover" />
-          <span className="text-xl font-normal tracking-wide" style={{ fontFamily: 'Alphacorsa, sans-serif' }}>Ana Solar</span>
-        </Link>
-        <div className="flex items-center gap-3">
-          <ThemeToggle />
-          <Link to="/chat" className="text-sm text-text-200 hover:text-text-100 border border-bg-200 px-4 py-2 rounded-lg transition-colors">
-            Go to Chat
-          </Link>
-        </div>
-      </header>
+      <Header />
 
-      <main className="flex-1 max-w-3xl mx-auto px-6 py-16">
-        <h1 className="text-4xl font-medium text-text-100 mb-2">Terms of Service</h1>
+      <main className="flex-1 max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <h1 className="text-3xl sm:text-4xl font-medium text-text-100 mb-2">Terms of Service</h1>
         <p className="text-sm text-text-400 mb-8">Last updated: June 2026</p>
 
-        <section className="space-y-6 text-[15px] leading-relaxed text-text-200">
+        <section className="space-y-6 text-sm sm:text-[15px] leading-relaxed text-text-200">
           <h2 className="text-xl font-medium text-text-100 mt-8 mb-4">1. Acceptance of Terms</h2>
           <p>
             By accessing or using Ana GPA ("the Service"), you agree to be bound by these
@@ -87,9 +76,7 @@ export default function TermsPage() {
         </section>
       </main>
 
-      <footer className="border-t border-bg-200 py-6 text-center text-sm text-text-400">
-        &copy; {new Date().getFullYear()} DTC Team — Ana AGI
-      </footer>
+      <Footer />
     </div>
   )
 }

@@ -1,5 +1,6 @@
 const CONFIG = {
-  backendUrl: localStorage.getItem('ana_backend_url') || 'http://192.168.1.126:8000',
+  backendUrl: localStorage.getItem('ana_backend_url') || 'https://thirstiest-divina-noncentrally.ngrok-free.dev',
+  // Alternative (VPS): 'http://162.0.224.233:8080',
   persona: 'default',
   language: 'auto',
 }
