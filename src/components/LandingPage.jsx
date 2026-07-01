@@ -3,15 +3,6 @@ import Footer from './Footer'
 import Header from './Header'
 import CardSwap, { Card } from './CardSwap'
 import TrueFocus from './TrueFocus'
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from './ui/navigation-menu'
 
 const features = [
   { title: 'Smart Conversations', description: 'Natural language chat with context-aware responses.' },
@@ -25,65 +16,7 @@ const features = [
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-bg-0 text-text-100 flex flex-col">
-      <Header landing>
-        <NavigationMenu className="hidden md:flex">
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Features</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[90vw] max-w-[500px] gap-2 p-2 md:grid-cols-2">
-                  {features.map((f) => (
-                    <li key={f.title}>
-                      <NavigationMenuLink asChild>
-                        <Link to="/chat" className="block p-3 rounded-md hover:bg-bg-200 transition-colors no-underline">
-                          <div className="text-sm font-medium text-text-100">{f.title}</div>
-                          <p className="text-xs text-text-300 mt-0.5">{f.description}</p>
-                        </Link>
-                      </NavigationMenuLink>
-                    </li>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>About</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[90vw] max-w-[220px] gap-2 p-2">
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <Link to="/about" className="block p-3 rounded-md hover:bg-bg-200 transition-colors no-underline">
-                        <div className="text-sm font-medium text-text-100">About Ana</div>
-                        <p className="text-xs text-text-300 mt-0.5">Learn about the project</p>
-                      </Link>
-                    </NavigationMenuLink>
-                  </li>
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <Link to="/privacy" className="block p-3 rounded-md hover:bg-bg-200 transition-colors no-underline">
-                        <div className="text-sm font-medium text-text-100">Privacy Policy</div>
-                        <p className="text-xs text-text-300 mt-0.5">How we handle your data</p>
-                      </Link>
-                    </NavigationMenuLink>
-                  </li>
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <Link to="/terms" className="block p-3 rounded-md hover:bg-bg-200 transition-colors no-underline">
-                        <div className="text-sm font-medium text-text-100">Terms of Use</div>
-                        <p className="text-xs text-text-300 mt-0.5">Terms and conditions</p>
-                      </Link>
-                    </NavigationMenuLink>
-                  </li>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                <Link to="/signin">Sign In</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-      </Header>
+      <Header landing />
 
       {/* ── Hero ── */}
       <section className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-14 sm:py-20 text-center">
@@ -119,33 +52,35 @@ export default function LandingPage() {
       </section>
 
       {/* ── Features ── */}
-      <section className="px-4 sm:px-6 py-12 sm:py-16 border-t border-bg-200">
+      <section className="px-4 sm:px-6 py-16 sm:py-20 border-t border-bg-200">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-medium text-center text-text-100 mb-16">
+          <h2 className="text-3xl sm:text-4xl font-medium text-center text-text-100 mb-12 sm:mb-16">
             Everything you need
           </h2>
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="flex-1 space-y-6">
-              {features.map((f, i) => (
-                <FeatureRow key={f.title} number={String(i + 1).padStart(2, '0')} title={f.title} description={f.description} />
-              ))}
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+            <div className="flex-1 order-2 lg:order-1 w-full">
+              <div className="space-y-5 max-w-xl mx-auto lg:mx-0">
+                {features.map((f, i) => (
+                  <FeatureRow key={f.title} number={String(i + 1).padStart(2, '0')} title={f.title} description={f.description} />
+                ))}
+              </div>
             </div>
-            <div className="flex-shrink-0 w-[500px] h-[600px] relative hidden lg:block">
+            <div className="flex-shrink-0 order-1 lg:order-2 w-[min(70vw,360px)] h-[55vw] max-h-[360px] relative lg:w-[440px] lg:h-[400px]">
               <CardSwap
-                width={500}
-                height={400}
-                cardDistance={60}
-                verticalDistance={70}
+                width={360}
+                height={280}
+                cardDistance={40}
+                verticalDistance={50}
                 delay={4000}
                 pauseOnHover={true}
               >
                 {features.map((f) => (
                   <Card key={f.title}>
                     <div className="flex flex-col h-full">
-                      <img src={getImage(f.title)} alt={f.title} className="w-full h-48 object-cover" />
-                      <div className="flex flex-col items-center justify-center flex-1 p-6 text-center">
-                        <h3 className="text-base font-semibold text-text-100 mb-2">{f.title}</h3>
-                        <p className="text-xs text-text-300 leading-relaxed">{f.description}</p>
+                      <img src={getImage(f.title)} alt={f.title} className="w-full h-28 sm:h-32 object-cover" />
+                      <div className="flex flex-col items-center justify-center flex-1 px-3 py-3 sm:px-4 text-center">
+                        <h3 className="text-xs sm:text-sm font-semibold text-text-100 mb-0.5 sm:mb-1">{f.title}</h3>
+                        <p className="text-[10px] sm:text-[11px] text-text-300 leading-relaxed">{f.description}</p>
                       </div>
                     </div>
                   </Card>

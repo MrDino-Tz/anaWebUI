@@ -2,7 +2,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  transform: translate(5%, 20%);
+  transform: translate(5%, -2%);
   transform-origin: bottom right;
 
   perspective: 900px;
@@ -23,14 +23,8 @@
   -webkit-backface-visibility: hidden;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .card-swap-container {
-    transform: scale(0.75) translate(25%, 25%);
-  }
-}
-
-@media (max-width: 480px) {
-  .card-swap-container {
-    transform: scale(0.55) translate(25%, 25%);
+    transform: scale(0.8) translate(5%, -2%);
   }
 }
