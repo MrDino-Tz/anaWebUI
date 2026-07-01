@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Footer from './Footer'
 import Header from './Header'
 import CardSwap, { Card } from './CardSwap'
+import MagicBento from './MagicBento'
 import TrueFocus from './TrueFocus'
 
 const features = [
@@ -57,30 +58,47 @@ export default function LandingPage() {
           <h2 className="text-3xl sm:text-4xl font-medium text-center text-text-100 mb-12 sm:mb-16">
             Everything you need
           </h2>
-          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-            <div className="flex-1 order-2 lg:order-1 w-full">
-              <div className="space-y-5 max-w-xl mx-auto lg:mx-0">
+          {/* Mobile: MagicBento */}
+          <div className="lg:hidden">
+            <MagicBento
+              textAutoHide={true}
+              enableStars={true}
+              enableSpotlight={true}
+              enableBorderGlow={true}
+              enableTilt={false}
+              enableMagnetism={false}
+              clickEffect={true}
+              spotlightRadius={300}
+              particleCount={12}
+              glowColor="217, 119, 87"
+            />
+          </div>
+
+          {/* Desktop: FeatureList + CardSwap */}
+          <div className="hidden lg:flex lg:flex-row items-center gap-16">
+            <div className="flex-1">
+              <div className="space-y-5 max-w-xl">
                 {features.map((f, i) => (
                   <FeatureRow key={f.title} number={String(i + 1).padStart(2, '0')} title={f.title} description={f.description} />
                 ))}
               </div>
             </div>
-            <div className="flex-shrink-0 order-1 lg:order-2 w-[min(70vw,360px)] h-[55vw] max-h-[360px] relative lg:w-[440px] lg:h-[400px]">
+            <div className="flex-shrink-0 w-[640px] h-[620px] relative">
               <CardSwap
-                width={360}
-                height={280}
-                cardDistance={40}
-                verticalDistance={50}
+                width={520}
+                height={400}
+                cardDistance={42}
+                verticalDistance={36}
                 delay={4000}
                 pauseOnHover={true}
               >
                 {features.map((f) => (
                   <Card key={f.title}>
                     <div className="flex flex-col h-full">
-                      <img src={getImage(f.title)} alt={f.title} className="w-full h-28 sm:h-32 object-cover" />
-                      <div className="flex flex-col items-center justify-center flex-1 px-3 py-3 sm:px-4 text-center">
-                        <h3 className="text-xs sm:text-sm font-semibold text-text-100 mb-0.5 sm:mb-1">{f.title}</h3>
-                        <p className="text-[10px] sm:text-[11px] text-text-300 leading-relaxed">{f.description}</p>
+                      <img src={getImage(f.title)} alt={f.title} className="w-full h-40 sm:h-48 object-cover" />
+                      <div className="flex flex-col items-center justify-center flex-1 px-4 py-4 sm:px-6 sm:py-5 text-center">
+                        <h3 className="text-sm sm:text-base font-semibold text-text-100 mb-1.5">{f.title}</h3>
+                        <p className="text-xs sm:text-sm text-text-300 leading-relaxed">{f.description}</p>
                       </div>
                     </div>
                   </Card>
