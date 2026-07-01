@@ -35,7 +35,7 @@ function NavigationMenuItem({ className, ...props }) {
 }
 
 const navigationMenuTriggerStyle = cva(
-  'cursor-pointer group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium hover:bg-[#2B2D31] hover:text-[#E3E3E3] disabled:pointer-events-none disabled:opacity-50 transition-colors',
+  'cursor-pointer group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium hover:bg-bg-200 hover:text-text-100 disabled:pointer-events-none disabled:opacity-50 transition-colors',
 )
 
 function NavigationMenuTrigger({ className, children, ...props }) {
@@ -60,7 +60,7 @@ function NavigationMenuContent({ className, ...props }) {
       data-slot="navigation-menu-content"
       className={cn(
         'top-0 left-0 w-full p-2 md:absolute md:w-auto md:data-[state=open]:animate-in md:data-[state=closed]:animate-out',
-        'bg-[#1E1F22] text-[#E3E3E3] rounded-md border border-[#2B2D31] shadow-lg overflow-hidden',
+        'bg-bg-100 text-text-100 rounded-md border border-bg-200 shadow-lg overflow-hidden',
         className,
       )}
       {...props}
@@ -74,7 +74,7 @@ function NavigationMenuViewport({ className, ...props }) {
       <NavigationMenuPrimitive.Viewport
         data-slot="navigation-menu-viewport"
         className={cn(
-          'shadow-lg shadow-black/5 rounded-md border border-[#2B2D31] bg-[#1E1F22] text-[#E3E3E3] p-1.5 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden md:w-[var(--radix-navigation-menu-viewport-width)]',
+          'shadow-lg shadow-black/5 rounded-md border border-bg-200 bg-bg-100 text-text-100 p-1.5 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden md:w-[var(--radix-navigation-menu-viewport-width)]',
           className,
         )}
         {...props}
@@ -88,7 +88,7 @@ function NavigationMenuLink({ className, ...props }) {
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        'hover:bg-[#2B2D31] hover:text-[#E3E3E3] data-[active=true]:bg-[#2B2D31]/50 flex flex-col gap-1 rounded-md p-2 text-sm transition-colors',
+        'hover:bg-bg-200 hover:text-text-100 data-[active=true]:bg-bg-200/50 flex flex-col gap-1 rounded-md p-2 text-sm transition-colors',
         className,
       )}
       {...props}
@@ -106,7 +106,7 @@ function NavigationMenuIndicator({ className, ...props }) {
       )}
       {...props}
     >
-      <div className="bg-[#2B2D31] relative top-[60%] h-2 w-2 rotate-45 rounded-t-sm shadow-md" />
+      <div className="bg-bg-200 relative top-[60%] h-2 w-2 rotate-45 rounded-t-sm shadow-md" />
     </NavigationMenuPrimitive.Indicator>
   )
 }
